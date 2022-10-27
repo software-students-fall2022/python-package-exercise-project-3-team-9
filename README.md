@@ -4,6 +4,21 @@
 
 A little exercise to create a Python package, build it, test it, distribute it, and use it. See [instructions](./instructions.md) for details.
 
+## Pypassgen - A simple password generator
+
+### Description:
+
+Pypassgen has 4 functions that assist the user in creating their passwords:
+
+1. Generating a random password based on the user's input criteria (e.g., all numeric, all alphabetic, uppercase, etc.)
+2. Verify if a user's entered password is secure.
+3. Encrypt the user's input string into a secured password based on the package's specific encryption rules.
+4. Decrypt the user's encrypted password back to its original form provided that the password was orginally encrypted by pypassgen.
+
+### How to install the package
+
+### How to use the package
+
 ## Contributors
 
 [Darren Le](https://github.com/DarrenLe20)
