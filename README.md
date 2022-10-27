@@ -8,4 +8,6 @@ A little exercise to create a Python package, build it, test it, distribute it, 
 
 [Darren Le](https://github.com/DarrenLe20)
 
+[Daniel Atlas](https://github.com/Spectraorder)
+
 ## PyPI link to package
