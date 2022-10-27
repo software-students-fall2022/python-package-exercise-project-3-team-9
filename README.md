@@ -10,4 +10,6 @@ A little exercise to create a Python package, build it, test it, distribute it, 
 
 [Daniel Atlas](https://github.com/Spectraorder)
 
+[Vincent Xu](https://github.com/yx-xyc)
+
 ## PyPI link to package
