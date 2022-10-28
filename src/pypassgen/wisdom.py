@@ -1,6 +1,13 @@
 import random
 import string
 from cryptography.fernet import Fernet
+from os import path
+
+
+def getFile(fileName):
+    """Returns the absolute path of a file."""
+    return path.join(path.dirname(__file__), fileName)
+
 
 def generate_password(length=8, num=0, upper=0, lower=0, special=0):
     """Generate a random password based on user input
@@ -41,27 +48,29 @@ def generate_password(length=8, num=0, upper=0, lower=0, special=0):
     password = ''.join(random.sample(password, len(password)))
     return password
 
+
 def encryption(str):
     arr = [
-        '0','1','2','3','4','5','6','7','8','9',
-        'a','b','c','d','e','f','g','h','i','j',
-        'k','l','m','n','o','p','q','r','s','t',
-        'u','v','w','x','y','z'
+        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+        'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
+        'u', 'v', 'w', 'x', 'y', 'z'
     ]
     str_encrypted = ""
     for char in str:
         if (char.isdigit() or char.isalpha()):
             idx = arr.index(char)
-            str_encrypted += arr[(idx+5)%len(arr)]
+            str_encrypted += arr[(idx+5) % len(arr)]
         else:
             str_encrypted += char
 
-    key = open("key.txt", "rb").read()
+    key = open(getFile("key.txt"), "rb").read()
     cipher_suite = Fernet(key)
     encoded_text = cipher_suite.encrypt(str_encrypted.encode('utf-8'))
     # decoded_text = cipher_suite.decrypt(encoded_text)
-    
+
     return encoded_text
+
 
 a = "jioaejfiaeonme314jio1ej31903je023jd02&&^(*^(*#!"
 b = "239ur0d8910j4jf09412209uj309rf09i109   f"
