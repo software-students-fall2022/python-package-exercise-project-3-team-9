@@ -1,3 +1,4 @@
+from itertools import count
 import src.pypassgen.wisdom as wisdom
 import random
 
@@ -46,7 +47,7 @@ def test_generate_password_special():
     assert any(not char.isalnum() for char in password)
 
 
-def test_generate_password_all():
+def test_generate_password_all_accuracy():
   # Test all parameters
     length = random.randint(1, 100)
     num = random.randint(1, 100)
@@ -59,3 +60,28 @@ def test_generate_password_all():
     assert any(char.isupper() for char in password)
     assert any(char.islower() for char in password)
     assert any(not char.isalnum() for char in password)
+
+
+def test_generate_password_all_count():
+  # Test all parameters
+    length = random.randint(1, 100)
+    num = random.randint(1, 100)
+    upper = random.randint(1, 100)
+    lower = random.randint(1, 100)
+    special = random.randint(1, 100)
+    password = wisdom.generate_password(length, num, upper, lower, special)
+    # Check that the password contains at least the required number of each character type
+    count_digit = count_upper = count_lower = count_special = 0
+    for char in password:
+        if char.isdigit():
+            count_digit += 1
+        if char.isupper():
+            count_upper += 1
+        if char.islower():
+            count_lower += 1
+        if not char.isalnum():
+            count_special += 1
+    assert count_digit >= num
+    assert count_upper >= upper
+    assert count_lower >= lower
+    assert count_special >= special
