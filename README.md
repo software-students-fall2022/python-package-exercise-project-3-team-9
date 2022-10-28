@@ -19,6 +19,11 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
 
 ### How to use the package
 
+- **_Generate a password_**
+- **_Verify a password_**
+- **_Encrypt a string_**
+- **_Decrypt an encrypted password_**
+
 ## Contributors
 
 [Darren Le](https://github.com/DarrenLe20)
