@@ -42,7 +42,11 @@ def main():
             print("Your password is: " + wisdom.generate_password(int(length),
                   int(digit), int(upper), int(lower), int(special)) + "\n")
         # elif (choice == "2"):
-        # elif (choice == "3"):
+        elif (choice == "3"):
+            phrase = input("Enter the phrase to encrypt: ")
+            print("Your encrypted phrase is: ", end = " ") 
+            print(wisdom.encryption(phrase))
+            print()
         # elif (choice == "4"):
         elif (choice == "5"):
             print("Goodbye!\n")

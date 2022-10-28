@@ -18,6 +18,7 @@ def generate_password(length=8, num=0, upper=0, lower=0, special=0):
         upper -- the minimal number of uppercase characters required in the password (default 0)
         lower -- the minimal number of lowercase characters required in the password (default 0)
         special -- the minimal number of special characters required in the password (default 0)
+        
     Returns:
         A string containing the generated password
     """
@@ -50,6 +51,14 @@ def generate_password(length=8, num=0, upper=0, lower=0, special=0):
 
 
 def encryption(str):
+    """Encrypt a string using Fernet encryption
+
+    Keyword arguments:
+        str -- the string to encrypt
+
+    Returns:
+        A string containing the encrypted string
+    """
     arr = [
         '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
         'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
@@ -67,12 +76,5 @@ def encryption(str):
     key = open(getFile("key.txt"), "rb").read()
     cipher_suite = Fernet(key)
     encoded_text = cipher_suite.encrypt(str_encrypted.encode('utf-8'))
-    # decoded_text = cipher_suite.decrypt(encoded_text)
 
     return encoded_text
-
-
-a = "jioaejfiaeonme314jio1ej31903je023jd02&&^(*^(*#!"
-b = "239ur0d8910j4jf09412209uj309rf09i109   f"
-print(encryption(a))
-print(encryption(b))
