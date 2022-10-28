@@ -17,7 +17,30 @@ def main():
         menu()
         choice = input("Enter your choice (1 - 5): ")
         if (choice == "1"):
-            print("Your password is: " + wisdom.generate_password() + "\n")
+            default_length = 8
+            default_digit = default_special = default_upper = default_lower = 0
+            length = input(
+                "Enter the mininal length of the password (default: 8): ")
+            digit = input(
+                "Enter the minimal number of numeric values needed (default: 0): ")
+            upper = input(
+                "Enter the minimal number of uppercase letters needed (default: 0): ")
+            lower = input(
+                "Enter the minimal number of lowercase letters needed (default: 0): ")
+            special = input(
+                "Enter the minimal number of special characters needed (default: 0): ")
+            if length == "":
+                length = default_length
+            if digit == "":
+                digit = default_digit
+            if upper == "":
+                upper = default_upper
+            if lower == "":
+                lower = default_lower
+            if special == "":
+                special = default_special
+            print("Your password is: " + wisdom.generate_password(int(length),
+                  int(digit), int(upper), int(lower), int(special)) + "\n")
         # elif (choice == "2"):
         # elif (choice == "3"):
         # elif (choice == "4"):
