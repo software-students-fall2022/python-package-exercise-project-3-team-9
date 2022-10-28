@@ -21,6 +21,7 @@ def generate_password(length=8, num=0, upper=0, lower=0, special=0):
     # all possible characters
     base = string.digits + string.ascii_letters + string.punctuation
     password = ""
+    # add the required number of each character type
     if (num != 0):
         password += ''.join(random.choice(string.digits) for _ in range(num))
     if (upper != 0):
@@ -38,7 +39,4 @@ def generate_password(length=8, num=0, upper=0, lower=0, special=0):
                             for _ in range(length - len(password)))
     # shuffle the password
     password = ''.join(random.sample(password, len(password)))
-    print(password)
-
-
-generate_password()
+    return password
