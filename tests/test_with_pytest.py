@@ -1,5 +1,7 @@
 import src.pypassgen.wisdom as wisdom
+from cryptography.fernet import Fernet
 import random
+import string
 
 
 # ------ TEST GENERATE PASSWORD ------
@@ -84,3 +86,21 @@ def test_generate_password_all_count():
     assert count_upper >= upper
     assert count_lower >= lower
     assert count_special >= special
+    
+
+# ------ TEST ENCRYPTION ------
+def test_empty_input():
+  # Test empty input
+  key = open(wisdom.getFile("key.txt"), "rb").read()
+  cipher_suite = Fernet(key)
+  encoded = wisdom.encryption("")
+  assert (cipher_suite.decrypt(encoded)).decode("utf-8") == ""
+  
+
+def test_random_input():
+  # Test special characters
+  key = open(wisdom.getFile("key.txt"), "rb").read()
+  cipher_suite = Fernet(key)
+  input = ''.join(random.sample(string.punctuation, len(string.punctuation)))
+  encoded = wisdom.encryption(input)
+  assert (cipher_suite.decrypt(encoded)).decode("utf-8") == input
