@@ -22,13 +22,34 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
 
 ### How to use the package
 
-- **_Generate a password_**
+- **_Initializing the package:_**
+
+  - Run the following command in the terminal: 
+```python -m pypassgen```  
+
+  - This will initialize the package and prompt the user to choose their desired function.
+
+- **_Generate a password:_**
+
+  - When prompted, enter ```1``` to start the password generator.
+
+  - Enter the minimal length of the password you want to generate. (default is 8)
+
+  - Enter the minimal number of different character types you want to include in your password.
 
 - **_Verify a password_**
 
-- **_Encrypt a string_**
+- **_Encrypt a string:_**
 
-- **_Decrypt an encrypted password_**
+  - When prompted, enter ```3``` to start the encryption process.
+
+  - Enter the string you want to encrypt.
+
+- **_Decrypt an encrypted string:_**
+
+  - When prompted, enter ```4``` to start the decryption process.
+
+  - Enter the encrypted string you want to decrypt.
 
 ## Contributors
 

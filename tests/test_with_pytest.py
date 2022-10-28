@@ -1,4 +1,3 @@
-from itertools import count
 import src.pypassgen.wisdom as wisdom
 import random
 
