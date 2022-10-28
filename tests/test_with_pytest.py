@@ -1,6 +1,61 @@
 import src.pypassgen.wisdom as wisdom
+import random
 
 
-def test_generate_password():
+# ------ TEST GENERATE PASSWORD ------
+def test_generate_password_default():
   # Test the default case
-    assert len(wisdom.generate_password(8, 0, 0, 0, 0)) == 8
+    assert len(wisdom.generate_password()) == 8
+
+
+def test_generate_password_length():
+  # Test the length parameter
+    length = random.randint(1, 100)
+    assert len(wisdom.generate_password(length, 0, 0, 0, 0)) == length
+
+
+def test_generate_password_num():
+  # Test the num parameter
+    num = random.randint(1, 100)
+    password = wisdom.generate_password(0, num, 0, 0, 0)
+    assert len(password) == num
+    assert any(char.isdigit() for char in password)
+
+
+def test_generate_password_upper():
+  # Test the upper parameter
+    upper = random.randint(1, 100)
+    password = wisdom.generate_password(0, 0, upper, 0, 0)
+    assert len(password) == upper
+    assert any(char.isupper() for char in password)
+
+
+def test_generate_password_lower():
+  # Test the lower parameter
+    lower = random.randint(1, 100)
+    password = wisdom.generate_password(0, 0, 0, lower, 0)
+    assert len(password) == lower
+    assert any(char.islower() for char in password)
+
+
+def test_generate_password_special():
+  # Test the special parameter
+    special = random.randint(1, 100)
+    password = wisdom.generate_password(0, 0, 0, 0, special)
+    assert len(password) == special
+    assert any(not char.isalnum() for char in password)
+
+
+def test_generate_password_all():
+  # Test all parameters
+    length = random.randint(1, 100)
+    num = random.randint(1, 100)
+    upper = random.randint(1, 100)
+    lower = random.randint(1, 100)
+    special = random.randint(1, 100)
+    password = wisdom.generate_password(length, num, upper, lower, special)
+    assert len(password) >= length
+    assert any(char.isdigit() for char in password)
+    assert any(char.isupper() for char in password)
+    assert any(char.islower() for char in password)
+    assert any(not char.isalnum() for char in password)
