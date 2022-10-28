@@ -6,18 +6,18 @@ import string
 
 # ------ TEST GENERATE PASSWORD ------
 def test_generate_password_default():
-  # Test the default case
+    # Test the default case
     assert len(wisdom.generate_password()) == 8
 
 
 def test_generate_password_length():
-  # Test the length parameter
+    # Test the length parameter
     length = random.randint(1, 100)
     assert len(wisdom.generate_password(length, 0, 0, 0, 0)) == length
 
 
 def test_generate_password_num():
-  # Test the num parameter
+    # Test the num parameter
     num = random.randint(1, 100)
     password = wisdom.generate_password(0, num, 0, 0, 0)
     assert len(password) == num
@@ -25,7 +25,7 @@ def test_generate_password_num():
 
 
 def test_generate_password_upper():
-  # Test the upper parameter
+    # Test the upper parameter
     upper = random.randint(1, 100)
     password = wisdom.generate_password(0, 0, upper, 0, 0)
     assert len(password) == upper
@@ -33,7 +33,7 @@ def test_generate_password_upper():
 
 
 def test_generate_password_lower():
-  # Test the lower parameter
+    # Test the lower parameter
     lower = random.randint(1, 100)
     password = wisdom.generate_password(0, 0, 0, lower, 0)
     assert len(password) == lower
@@ -41,7 +41,7 @@ def test_generate_password_lower():
 
 
 def test_generate_password_special():
-  # Test the special parameter
+    # Test the special parameter
     special = random.randint(1, 100)
     password = wisdom.generate_password(0, 0, 0, 0, special)
     assert len(password) == special
@@ -49,7 +49,7 @@ def test_generate_password_special():
 
 
 def test_generate_password_all_accuracy():
-  # Test all parameters
+    # Test all parameters
     length = random.randint(1, 100)
     num = random.randint(1, 100)
     upper = random.randint(1, 100)
@@ -64,7 +64,7 @@ def test_generate_password_all_accuracy():
 
 
 def test_generate_password_all_count():
-  # Test all parameters
+    # Test all parameters
     length = random.randint(1, 100)
     num = random.randint(1, 100)
     upper = random.randint(1, 100)
@@ -86,21 +86,46 @@ def test_generate_password_all_count():
     assert count_upper >= upper
     assert count_lower >= lower
     assert count_special >= special
-    
+
 
 # ------ TEST ENCRYPTION ------
 def test_empty_input():
-  # Test empty input
-  key = open(wisdom.getFile("key.txt"), "rb").read()
-  cipher_suite = Fernet(key)
-  encoded = wisdom.encryption("")
-  assert (cipher_suite.decrypt(encoded)).decode("utf-8") == ""
-  
+    # Test empty input
+    key = open(wisdom.getFile("key.txt"), "rb").read()
+    cipher_suite = Fernet(key)
+    encoded = wisdom.encryption("")
+    assert (cipher_suite.decrypt(encoded)).decode("utf-8") == ""
+
+
+def test_special_input():
+    # Test special characters
+    key = open(wisdom.getFile("key.txt"), "rb").read()
+    cipher_suite = Fernet(key)
+    input = "".join(random.sample(string.punctuation, len(string.punctuation)))
+    encoded = wisdom.encryption(input)
+    assert (cipher_suite.decrypt(encoded)).decode("utf-8") == input
+
 
 def test_random_input():
-  # Test special characters
-  key = open(wisdom.getFile("key.txt"), "rb").read()
-  cipher_suite = Fernet(key)
-  input = ''.join(random.sample(string.punctuation, len(string.punctuation)))
-  encoded = wisdom.encryption(input)
-  assert (cipher_suite.decrypt(encoded)).decode("utf-8") == input
+    # Test random input
+    arr = [
+        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+        'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
+        'u', 'v', 'w', 'x', 'y', 'z'
+    ]
+    input = "".join(
+        random.sample(
+            string.ascii_lowercase + string.digits,
+            len(string.ascii_lowercase + string.digits),
+        )
+    )
+    print("Input: " + input)
+    str_encrypted = ""
+    for char in input:
+        idx = arr.index(char)
+        str_encrypted += arr[(idx+5) % len(arr)]
+    key = open(wisdom.getFile("key.txt"), "rb").read()
+    cipher_suite = Fernet(key)
+    encoded = wisdom.encryption(input)
+    assert (cipher_suite.decrypt(encoded)).decode('utf-8') == str_encrypted
