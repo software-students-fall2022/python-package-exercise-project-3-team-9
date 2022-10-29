@@ -251,7 +251,7 @@ def decryption(str):
         'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
         'u', 'v', 'w', 'x', 'y', 'z'
     ]
-    #decoding decrypted text by shifting
+    #decoding decryppted text by shifting
     decoded_text= ""
     for char in str_decrypted:
         if (char.isdigit() or char.isalpha()):
