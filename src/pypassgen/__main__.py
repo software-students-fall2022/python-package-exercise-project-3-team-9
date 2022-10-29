@@ -44,10 +44,13 @@ def main():
         # elif (choice == "2"):
         elif (choice == "3"):
             phrase = input("Enter the phrase to encrypt: ")
-            print("Your encrypted phrase is: ", end = " ") 
+            print("Your encrypted phrase is: ", end=" ")
             print(wisdom.encryption(phrase))
             print()
-        # elif (choice == "4"):
+        elif (choice == "4"):
+            phrase = input("Enter the phrase to decrypt: ")
+            print("Your decrypted phrase is: " +
+                  wisdom.decryption(phrase) + "\n")
         elif (choice == "5"):
             print("Goodbye!\n")
         else:

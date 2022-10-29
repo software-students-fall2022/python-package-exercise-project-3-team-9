@@ -6,8 +6,6 @@ A little exercise to create a Python package, build it, test it, distribute it, 
 
 ## Pypassgen - A simple password generator
 
-### Description:
-
 Pypassgen has 4 functions that assist the user in creating their passwords:
 
 1. Generating a random password based on the user's input criteria (e.g., all numeric, all alphabetic, uppercase, etc.)
@@ -18,38 +16,111 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
 
 4. Decrypt the user's encrypted password back to its original form provided that the password was orginally encrypted by pypassgen.
 
-### How to install the package
+## Installation
 
-### How to use the package
+- Create a `pipenv`-managed environment.
+
+- Run the following command to install the lastest version of the package:
+
+  ```bash
+  pipenv install -i https://test.pypi.org/simple/ pypassgen==1.0.0
+  ```
+
+## Running package directly from the command line
 
 - **_Initializing the package:_**
 
-  - Run the following command in the terminal: 
-```python -m pypassgen```  
+  - Run the following command in the terminal:
+
+    ```python
+    python -m pypassgen
+    ```
 
   - This will initialize the package and prompt the user to choose their desired function.
 
 - **_Generate a password:_**
 
-  - When prompted, enter ```1``` to start the password generator.
+  - When prompted, enter `1` to start the password generator.
 
   - Enter the minimal length of the password you want to generate. (default is 8)
 
   - Enter the minimal number of different character types you want to include in your password.
 
-- **_Verify a password_**
+- **_Verify a password:_**
+
+  - When prompted, enter `2` to start the password verifier.
+
+  - Enter the password you want to verify.
 
 - **_Encrypt a string:_**
 
-  - When prompted, enter ```3``` to start the encryption process.
+  - When prompted, enter `3` to start the encryption process.
 
   - Enter the string you want to encrypt.
 
 - **_Decrypt an encrypted string:_**
 
-  - When prompted, enter ```4``` to start the decryption process.
+  - When prompted, enter `4` to start the decryption process.
 
   - Enter the encrypted string you want to decrypt.
+
+## Using the package as a module in a Python project
+
+- Activate the virtual environment after installing the package:
+
+  ```python
+  pipenv shell
+  ```
+
+- Create a Python program that imports the package and its functions:
+
+  ```python
+  from pypassgen import wisdom
+  ```
+
+### Functions
+
+- **_Generate a password:_**
+
+  - Call the `generate_password` function and pass the minimal length and minimal number of different character types as arguments:
+
+    ```python
+    # in pypassgen.wisdom
+    generate_password(length=8, num=0, upper=0, lower=0, special=0)
+    ```
+
+    For example:
+
+    ```python
+    # in your project
+    password = wisdom.generate_password(length=8, num=2, upper=2, lower=2, special=2)
+
+    print(password)
+    > C0?8yOa)
+    ```
+
+- **_Verify a password:_**
+
+- **_Encrypt a string:_**
+
+  - Call the `encryption` function and pass the string to be encrypted as argument:
+
+    ```python
+    # in pypassgen.wisdom
+    encryption(str)
+    ```
+
+    For example:
+
+    ```python
+    # in your project
+    encoded = wisdom.encrypted = wisdom.encryption("hello world!")
+
+    print(encoded)
+    >b'gAAAAABjXHQVlraVKy6okfj11o0h0AEqAG8caemLAKEdRCmsrO84_5iG_UatAna5JdWBjZWuJImP8f0K627DmeNkU1a3VlhFvg=='
+    ```
+
+- **_Decrypt an encrypted string:_**
 
 ## Contributors
 
