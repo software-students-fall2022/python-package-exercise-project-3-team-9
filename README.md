@@ -96,7 +96,7 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
     password = wisdom.generate_password(length=8, num=2, upper=2, lower=2, special=2)
 
     print(password)
-    > C0?8yOa)
+    # C0?8yOa)
     ```
 
 - **_Verify a password:_**
@@ -117,7 +117,7 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
     encoded = wisdom.encrypted = wisdom.encryption("hello world!")
 
     print(encoded)
-    >b'gAAAAABjXHQVlraVKy6okfj11o0h0AEqAG8caemLAKEdRCmsrO84_5iG_UatAna5JdWBjZWuJImP8f0K627DmeNkU1a3VlhFvg=='
+    # b'gAAAAABjXHQVlraVKy6okfj11o0h0AEqAG8caemLAKEdRCmsrO84_5iG_UatAna5JdWBjZWuJImP8f0K627DmeNkU1a3VlhFvg=='
     ```
 
 - **_Decrypt an encrypted string:_**
