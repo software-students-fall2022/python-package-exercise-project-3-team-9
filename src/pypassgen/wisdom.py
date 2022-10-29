@@ -78,3 +78,35 @@ def encryption(str):
     encoded_text = cipher_suite.encrypt(str_encrypted.encode('utf-8'))
     
     return encoded_text
+
+
+def decryption(str):
+    """Decrypt a string using Fernet decryption and shifting
+
+    Keyword arguments:
+        str -- the string to decrypt
+
+    Returns:
+        A string containing the decrypted and decooded string
+    """
+    #retreiving key from db + decrypting using Fernet
+    key = open(getFile("key.txt"), "rb").read()
+    cipher_suite = Fernet(key)
+    str_decrypted = cipher_suite.decrypt(str.decode('utf-8'))
+
+    arr = [
+        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+        'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
+        'u', 'v', 'w', 'x', 'y', 'z'
+    ]
+    #decoding decryppted text by shifting
+    decoded_text= ""
+    for char in str_decrypted:
+        if (char.isdigit() or char.isalpha()):
+            idx= arr.index(char)
+            decoded_text += arr[(idx-5) % len(arr)]
+        else:
+            decoded_text += char
+
+    return decoded_text
