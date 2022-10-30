@@ -156,14 +156,14 @@ def encryption(str):
 
 def decryption(str):
     """Decrypt a string using Fernet decryption and shifting
-
+    
     Keyword arguments:
         str -- the string to decrypt
-
+        
     Returns:
-        A string containing the decrypted and decooded string
+        A string containing the decrypted and decoded string
     """
-    #retreiving key from db + decrypting using Fernet
+    # retreiving key from db + decrypting using Fernet
     key = open(getFile("key.txt"), "rb").read()
     cipher_suite = Fernet(key)
     str_decrypted = cipher_suite.decrypt(str.decode('utf-8'))
@@ -174,11 +174,11 @@ def decryption(str):
         'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
         'u', 'v', 'w', 'x', 'y', 'z'
     ]
-    #decoding decrypted text by shifting
-    decoded_text= ""
+    # decoding decrypted text by shifting
+    decoded_text = ""
     for char in str_decrypted:
         if (char.isdigit() or char.isalpha()):
-            idx= arr.index(char)
+            idx = arr.index(char)
             decoded_text += arr[(idx-5) % len(arr)]
         else:
             decoded_text += char
