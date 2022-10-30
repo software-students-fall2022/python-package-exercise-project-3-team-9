@@ -41,7 +41,10 @@ def main():
                 special = default_special
             print("Your password is: " + wisdom.generate_password(int(length),
                   int(digit), int(upper), int(lower), int(special)) + "\n")
-        # elif (choice == "2"):
+        elif (choice == "2"):
+            pass_str = input("Enter your password: ")
+            print(wisdom.verify_type(wisdom.verify_pass(pass_str), len(pass_str)))
+            print()
         elif (choice == "3"):
             phrase = input("Enter the phrase to encrypt: ")
             print("Your encrypted phrase is: ", end=" ")
