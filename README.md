@@ -53,7 +53,7 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
 
   - Enter the minimal length of the password you want to generate. (default is 8)
 
-  - Enter the minimal number of different character types you want to include in your password.
+  - Enter the minimal number of different character types you want to include in your password (default is 1), or enter `0` to exclude them.
 
 - **_Verify a password:_**
 
@@ -91,11 +91,12 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
 
 - **_Generate a password:_**
 
-  - Call the `generate_password` function and pass the minimal length and minimal number of different character types as arguments:
+  - Call the `generate_password` function and pass the minimal length and minimal number of different character types as arguments,
+  - Pass in `0` if you don't want the password to include specific character types.
 
     ```python
     # in pypassgen.wisdom
-    generate_password(length=8, num=0, upper=0, lower=0, special=0)
+    generate_password(length=8, num=1, upper=1, lower=1, special=1)
     ```
 
     For example:

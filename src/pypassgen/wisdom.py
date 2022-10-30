@@ -9,45 +9,54 @@ def getFile(fileName):
     return path.join(path.dirname(__file__), fileName)
 
 
-def generate_password(length=8, num=0, upper=0, lower=0, special=0):
+def generate_password(length=8, num=1, upper=1, lower=1, special=1):
     """Generate a random password based on user input
 
     Keyword arguments:
         length -- the minimal length of the password to generate (default 8)
-        num -- the minimal number of numeric characters required in the password (default 0)
-        upper -- the minimal number of uppercase characters required in the password (default 0)
-        lower -- the minimal number of lowercase characters required in the password (default 0)
-        special -- the minimal number of special characters required in the password (default 0)
-        
+        num -- the minimal number of numeric characters required in the password (default 1)
+        upper -- the minimal number of uppercase characters required in the password (default 1)
+        lower -- the minimal number of lowercase characters required in the password (default 1)
+        special -- the minimal number of special characters required in the password (default 1)
+
     Returns:
         A string containing the generated password
     """
     # Catch errors
     if length < 1 or num < 0 or upper < 0 or lower < 0 or special < 0:
-        print("Invalid input. Please try again.")
+        print("ERROR: Invalid input. Please try again.")
+        return "ERROR: Password generation failed."
+    if num == 0 and upper == 0 and lower == 0 and special == 0:
+        print("ERROR: Password must contain at least 1 type of character.")
+        return "ERROR: Password generation failed."
+    else:
+        base = ""
+        password = ""
+        # add the required number of each character type
+        if (num != 0):
+            base += string.digits
+            password += ''.join(random.choice(string.digits)
+                                for _ in range(num))
+        if (upper != 0):
+            base += string.ascii_uppercase
+            password += ''.join(random.choice(string.ascii_uppercase)
+                                for _ in range(upper))
+        if (lower != 0):
+            base += string.ascii_lowercase
+            password += ''.join(random.choice(string.ascii_lowercase)
+                                for _ in range(lower))
+        if (special != 0):
+            base += string.punctuation
+            password += ''.join(random.choice(string.punctuation)
+                                for _ in range(special))
+        # generate the rest of the password if needed
+        if (length - len(password) > 0):
+            password += ''.join(random.choice(base)
+                                for _ in range(length - len(password)))
+        # shuffle the password
+        password = ''.join(random.sample(password, len(password)))
+        return password
 
-    # all possible characters
-    base = string.digits + string.ascii_letters + string.punctuation
-    password = ""
-    # add the required number of each character type
-    if (num != 0):
-        password += ''.join(random.choice(string.digits) for _ in range(num))
-    if (upper != 0):
-        password += ''.join(random.choice(string.ascii_uppercase)
-                            for _ in range(upper))
-    if (lower != 0):
-        password += ''.join(random.choice(string.ascii_lowercase)
-                            for _ in range(lower))
-    if (special != 0):
-        password += ''.join(random.choice(string.punctuation)
-                            for _ in range(special))
-    # generate the rest of the password if needed
-    if (length - len(password) > 0):
-        password += ''.join(random.choice(base)
-                            for _ in range(length - len(password)))
-    # shuffle the password
-    password = ''.join(random.sample(password, len(password)))
-    return password
 
 def verify_pass(password=None):
     """Verify and determine what type of password the user is inputting
@@ -63,7 +72,7 @@ def verify_pass(password=None):
         3 contains numbers
         4 contains special characters
     """
-    if password==None:
+    if password == None:
         print("Invalid input. Please try again.")
         return None
     output = []
@@ -90,6 +99,7 @@ def verify_pass(password=None):
                 output.append(4)
     return output
 
+
 def verify_type(pass_type=[], length=0):
     """Verify and determine what type of password the user is inputting
 
@@ -99,30 +109,31 @@ def verify_type(pass_type=[], length=0):
     Returns:
         pass_str -- the string for properties of password
     """
-    if length==0:
+    if length == 0:
         print("Invalid input. Please try again.")
         return ''
-    if len(pass_type)==4 and length>=8:
+    if len(pass_type) == 4 and length >= 8:
         print("Very Strong Password")
-    elif len(pass_type)>=2 and length>=6:
+    elif len(pass_type) >= 2 and length >= 6:
         print("Strong Password")
     else:
         print("Weak Password")
     pass_str = 'It has at least one '
     for cur in pass_type:
-        if cur==1:
+        if cur == 1:
             pass_str += 'lowercase'
-        if cur==2:
+        if cur == 2:
             pass_str += 'uppercase'
-        if cur==3:
+        if cur == 3:
             pass_str += 'number'
-        if cur==4:
+        if cur == 4:
             pass_str += 'special character'
-        if cur==pass_type[len(pass_type)-1]:
+        if cur == pass_type[len(pass_type)-1]:
             pass_str += '.'
         else:
             pass_str += ', '
     return pass_str
+
 
 def encryption(str):
     """Encrypt a string using Fernet encryption
@@ -150,7 +161,7 @@ def encryption(str):
     key = open(getFile("key.txt"), "rb").read()
     cipher_suite = Fernet(key)
     encoded_text = cipher_suite.encrypt(str_encrypted.encode('utf-8'))
-    
+
     return encoded_text
 
 
@@ -163,7 +174,7 @@ def decryption(str):
     Returns:
         A string containing the decrypted and decooded string
     """
-    #retreiving key from db + decrypting using Fernet
+    # retreiving key from db + decrypting using Fernet
     key = open(getFile("key.txt"), "rb").read()
     cipher_suite = Fernet(key)
     str_decrypted = cipher_suite.decrypt(str.decode('utf-8'))
@@ -174,11 +185,11 @@ def decryption(str):
         'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
         'u', 'v', 'w', 'x', 'y', 'z'
     ]
-    #decoding decrypted text by shifting
-    decoded_text= ""
+    # decoding decrypted text by shifting
+    decoded_text = ""
     for char in str_decrypted:
         if (char.isdigit() or char.isalpha()):
-            idx= arr.index(char)
+            idx = arr.index(char)
             decoded_text += arr[(idx-5) % len(arr)]
         else:
             decoded_text += char

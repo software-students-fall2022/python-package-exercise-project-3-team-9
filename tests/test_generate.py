@@ -12,7 +12,7 @@ def test_generate_password_default():
 def test_generate_password_length():
     # Test the length parameter
     length = random.randint(1, 100)
-    assert len(wisdom.generate_password(length, 0, 0, 0, 0)) == length
+    assert len(wisdom.generate_password(length, 1, 1, 1, 1)) == length
 
 
 def test_generate_password_num():

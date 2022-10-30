@@ -18,17 +18,17 @@ def main():
         choice = input("Enter your choice (1 - 5): ")
         if (choice == "1"):
             default_length = 8
-            default_digit = default_special = default_upper = default_lower = 0
+            default_digit = default_special = default_upper = default_lower = 1
             length = input(
                 "Enter the mininal length of the password (default: 8): ")
             digit = input(
-                "Enter the minimal number of numeric values needed (default: 0): ")
+                "Enter the minimal number of numeric values needed (default: 1): ")
             upper = input(
-                "Enter the minimal number of uppercase letters needed (default: 0): ")
+                "Enter the minimal number of uppercase letters needed (default: 1): ")
             lower = input(
-                "Enter the minimal number of lowercase letters needed (default: 0): ")
+                "Enter the minimal number of lowercase letters needed (default: 1): ")
             special = input(
-                "Enter the minimal number of special characters needed (default: 0): ")
+                "Enter the minimal number of special characters needed (default: 1): ")
             if length == "":
                 length = default_length
             if digit == "":
