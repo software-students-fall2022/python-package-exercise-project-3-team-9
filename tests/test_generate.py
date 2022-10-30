@@ -87,4 +87,124 @@ def test_generate_password_all_count():
     assert count_upper >= upper
     assert count_lower >= lower
     assert count_special >= special
-    
+
+# ------ TEST GENERATE PASSWORD ------
+def test_verify_very_strong():
+    length = random.randint(8, 100)
+    num = random.randint(1, 100)
+    upper = random.randint(1, 100)
+    lower = random.randint(1, 100)
+    special = random.randint(1, 100)
+    password = wisdom.generate_password(length, num, upper, lower, special)
+    assert wisdom.verify_type(wisdom.verify_pass(password), len(password))
+
+def test_verify_strong_withoutnum():
+    length = random.randint(6, 7)
+    upper = random.randint(1, 100)
+    lower = random.randint(1, 100)
+    special = random.randint(1, 100)
+    password = wisdom.generate_password(length, 0, upper, lower, special)
+    assert wisdom.verify_type(wisdom.verify_pass(password), len(password))
+
+def test_verify_strong_withoutupper():
+    length = random.randint(6, 7)
+    num = random.randint(1, 100)
+    lower = random.randint(1, 100)
+    special = random.randint(1, 100)
+    password = wisdom.generate_password(length, num, 0, lower, special)
+    assert wisdom.verify_type(wisdom.verify_pass(password), len(password))
+
+def test_verify_strong_withoutlower():
+    length = random.randint(6, 7)
+    num = random.randint(1, 100)
+    upper = random.randint(1, 100)
+    special = random.randint(1, 100)
+    password = wisdom.generate_password(length, num, upper, 0, special)
+    assert wisdom.verify_type(wisdom.verify_pass(password), len(password))
+
+def test_verify_strong_withoutspecial():
+    length = random.randint(6, 7)
+    num = random.randint(1, 100)
+    upper = random.randint(1, 100)
+    lower = random.randint(1, 100)
+    password = wisdom.generate_password(length, num, upper, lower, 0)
+    assert wisdom.verify_type(wisdom.verify_pass(password), len(password))
+
+def test_verify_weak():
+    length = random.randint(1, 5)
+    num = random.randint(1, 100)
+    upper = random.randint(1, 100)
+    lower = random.randint(1, 100)
+    special = random.randint(1, 100)
+    password = wisdom.generate_password(length, num, upper, lower, special)
+    assert wisdom.verify_type(wisdom.verify_pass(password), len(password))
+
+# ------ TEST ENCRYPTION ------
+def test_empty_input():
+    # Test empty input
+    key = open(wisdom.getFile("key.txt"), "rb").read()
+    cipher_suite = Fernet(key)
+    encoded = wisdom.encryption("")
+    assert (cipher_suite.decrypt(encoded)).decode("utf-8") == ""
+
+
+def test_special_input():
+    # Test special characters
+    key = open(wisdom.getFile("key.txt"), "rb").read()
+    cipher_suite = Fernet(key)
+    input = "".join(random.sample(string.punctuation, len(string.punctuation)))
+    encoded = wisdom.encryption(input)
+    assert (cipher_suite.decrypt(encoded)).decode("utf-8") == input
+
+
+def test_alphanumeric_input():
+    # Test random input
+    arr = [
+        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+        'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
+        'u', 'v', 'w', 'x', 'y', 'z'
+    ]
+    input = "".join(
+        random.sample(
+            string.ascii_lowercase + string.digits,
+            len(string.ascii_lowercase + string.digits),
+        )
+    )
+    print("Input: " + input)
+    str_encrypted = ""
+    for char in input:
+        idx = arr.index(char)
+        str_encrypted += arr[(idx+5) % len(arr)]
+    key = open(wisdom.getFile("key.txt"), "rb").read()
+    cipher_suite = Fernet(key)
+    encoded = wisdom.encryption(input)
+    assert (cipher_suite.decrypt(encoded)).decode('utf-8') == str_encrypted
+
+
+def test_all_input():
+  # Test random input
+    arr = [
+        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+        'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
+        'u', 'v', 'w', 'x', 'y', 'z'
+    ]
+    input = "".join(
+        random.sample(
+            string.ascii_lowercase + string.digits + string.punctuation,
+            len(string.ascii_lowercase + string.digits + string.punctuation),
+        )
+    )
+    print("Input: " + input)
+    str_encrypted = ""
+    for char in input:
+        if (char.isdigit() or char.isalpha()):
+            idx = arr.index(char)
+            str_encrypted += arr[(idx+5) % len(arr)]
+        else:
+            str_encrypted += char
+    key = open(wisdom.getFile("key.txt"), "rb").read()
+    cipher_suite = Fernet(key)
+    encoded = wisdom.encryption(input)
+    assert (cipher_suite.decrypt(encoded)).decode('utf-8') == str_encrypted
