@@ -103,11 +103,11 @@ def verify_type(pass_type=[], length=0):
         print("Invalid input. Please try again.")
         return ''
     if len(pass_type)==4 and length>=8:
-        print("Very Strong Password:")
+        print("Very Strong Password")
     elif len(pass_type)>=2 and length>=6:
-        print("Strong Password:")
+        print("Strong Password")
     else:
-        print("Weak Password:")
+        print("Weak Password")
     pass_str = 'It has at least one '
     for cur in pass_type:
         if cur==1:
