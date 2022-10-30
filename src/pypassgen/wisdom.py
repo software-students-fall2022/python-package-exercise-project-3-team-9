@@ -49,6 +49,80 @@ def generate_password(length=8, num=0, upper=0, lower=0, special=0):
     password = ''.join(random.sample(password, len(password)))
     return password
 
+def verify_pass(password=None):
+    """Verify and determine what type of password the user is inputting
+
+    Keyword arguments:
+        password -- the string for password
+
+    Returns:
+        None if the input is invalid
+        A list with codes:
+        1 contains lowercase
+        2 contains uppercase
+        3 contains numbers
+        4 contains special characters
+    """
+    if password==None:
+        print("Invalid input. Please try again.")
+        return None
+    output = []
+    for cur in password:
+        if string.ascii_lowercase.__contains__(cur):
+            try:
+                pos = output.index(1)
+            except:
+                output.append(1)
+        if string.ascii_uppercase.__contains__(cur):
+            try:
+                pos = output.index(2)
+            except:
+                output.append(2)
+        if string.digits.__contains__(cur):
+            try:
+                pos = output.index(3)
+            except:
+                output.append(3)
+        if string.punctuation.__contains__(cur):
+            try:
+                pos = output.index(4)
+            except:
+                output.append(4)
+    return output
+
+def verify_type(pass_type=[], length=0):
+    """Verify and determine what type of password the user is inputting
+
+    Keyword arguments:
+        pass_type -- the type list for password
+
+    Returns:
+        pass_str -- the string for properties of password
+    """
+    if length==0:
+        print("Invalid input. Please try again.")
+        return ''
+    if len(pass_type)==4 and length>=8:
+        print("Very Strong Password:")
+    elif len(pass_type)>=2 and length>=6:
+        print("Strong Password:")
+    else:
+        print("Weak Password:")
+    pass_str = 'It has at least one '
+    for cur in pass_type:
+        if cur==1:
+            pass_str += 'lowercase'
+        if cur==2:
+            pass_str += 'uppercase'
+        if cur==3:
+            pass_str += 'number'
+        if cur==4:
+            pass_str += 'special character'
+        if cur==pass_type[len(pass_type)-1]:
+            pass_str += '.'
+        else:
+            pass_str += ', '
+    return pass_str
 
 def verify_pass(password=None):
     """Verify and determine what type of password the user is inputting
