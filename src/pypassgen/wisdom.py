@@ -49,6 +49,7 @@ def generate_password(length=8, num=0, upper=0, lower=0, special=0):
     password = ''.join(random.sample(password, len(password)))
     return password
 
+
 def verify_pass(password=None):
     """Verify and determine what type of password the user is inputting
 
@@ -90,6 +91,7 @@ def verify_pass(password=None):
                 output.append(4)
     return output
 
+
 def verify_type(pass_type=[], length=0):
     """Verify and determine what type of password the user is inputting
 
@@ -123,6 +125,7 @@ def verify_type(pass_type=[], length=0):
         else:
             pass_str += ', '
     return pass_str
+
 
 def encryption(str):
     """Encrypt a string using Fernet encryption
