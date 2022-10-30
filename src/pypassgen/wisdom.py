@@ -131,7 +131,7 @@ def encryption(str):
         str -- the string to encrypt
 
     Returns:
-        A string containing the encrypted string
+        A string containing the encrypted and encoded string
     """
     arr = [
         '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
