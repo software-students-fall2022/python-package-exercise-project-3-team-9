@@ -1,6 +1,5 @@
 import src.pypassgen.wisdom as wisdom
 import random
-import string
 
 # ------ TEST VERIFICATION ------
 def test_verify_very_strong():
