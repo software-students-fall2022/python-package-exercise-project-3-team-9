@@ -37,6 +37,15 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
     ```
 
   - This will initialize the package and prompt the user to choose their desired function.
+    ```bash
+    Welcome to pypassgen - your simple and lightweight password generator!
+    1. Generate a password
+    2. Verify a password
+    3. Encrypt a phrase
+    4. Decrypt an encrypted phrase
+    5. Exit
+    Enter your choice (1 - 5):
+    ```
 
 - **_Generate a password:_**
 
