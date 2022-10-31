@@ -18,32 +18,36 @@ def test_generate_password_length():
 def test_generate_password_num():
     # Test the num parameter
     num = random.randint(1, 100)
-    password = wisdom.generate_password(0, num, 0, 0, 0)
-    assert len(password) == num
+    length = random.randint(1, 100)
+    password = wisdom.generate_password(length, num, 0, 0, 0)
+    assert len(password) >= num
     assert any(char.isdigit() for char in password)
 
 
 def test_generate_password_upper():
     # Test the upper parameter
     upper = random.randint(1, 100)
-    password = wisdom.generate_password(0, 0, upper, 0, 0)
-    assert len(password) == upper
+    length = random.randint(1, 100)
+    password = wisdom.generate_password(length, 0, upper, 0, 0)
+    assert len(password) >= upper
     assert any(char.isupper() for char in password)
 
 
 def test_generate_password_lower():
     # Test the lower parameter
     lower = random.randint(1, 100)
-    password = wisdom.generate_password(0, 0, 0, lower, 0)
-    assert len(password) == lower
+    length = random.randint(1, 100)
+    password = wisdom.generate_password(length, 0, 0, lower, 0)
+    assert len(password) >= lower
     assert any(char.islower() for char in password)
 
 
 def test_generate_password_special():
     # Test the special parameter
     special = random.randint(1, 100)
-    password = wisdom.generate_password(0, 0, 0, 0, special)
-    assert len(password) == special
+    length = random.randint(1, 100)
+    password = wisdom.generate_password(length, 0, 0, 0, special)
+    assert len(password) >= special
     assert any(not char.isalnum() for char in password)
 
 
