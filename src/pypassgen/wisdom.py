@@ -26,7 +26,7 @@ def generate_password(length=8, num=1, upper=1, lower=1, special=1):
     if length < 1 or num < 0 or upper < 0 or lower < 0 or special < 0:
         print("ERROR: Invalid input. Please try again.")
         return "ERROR: Password generation failed."
-    if num == 0 and upper == 0 and lower == 0 and special == 0:
+    elif num == 0 and upper == 0 and lower == 0 and special == 0:
         print("ERROR: Password must contain at least 1 type of character.")
         return "ERROR: Password generation failed."
     else:
