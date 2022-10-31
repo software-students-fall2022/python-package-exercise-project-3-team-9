@@ -111,6 +111,25 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
 
 - **_Verify a password:_**
 
+  - Call the `verify_password` function and pass the password you want to verify as an argument.
+
+    ```python
+    # in pypassgen.wisdom
+    verify_pass(password=None)
+    verify_type(pass_type=[], length=0):
+    ```
+
+    For example:
+
+    ```python
+    # in your project
+    password = "C0?8yOa)"
+
+    print(wisdom.verify_type(wisdom.verify_pass(pass_str), len(pass_str)))
+    # Very Strong Password
+    # It has at least one uppercase, number, special character, lowercase.
+    ```
+
 - **_Encrypt a string:_**
 
   - Call the `encryption` function and pass the string to be encrypted as argument:

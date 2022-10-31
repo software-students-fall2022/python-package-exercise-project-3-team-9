@@ -4,6 +4,8 @@ import random
 import string
 
 # ------ TEST ENCRYPTION ------
+
+
 def test_empty_input():
     # Test empty input
     key = open(wisdom.getFile("key.txt"), "rb").read()
@@ -23,12 +25,8 @@ def test_special_input():
 
 def test_alphanumeric_input():
     # Test random input
-    arr = [
-        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
-        'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
-        'u', 'v', 'w', 'x', 'y', 'z'
-    ]
+    base = string.digits + string.ascii_letters
+    arr = list(base)
     input = "".join(
         random.sample(
             string.ascii_lowercase + string.digits,
@@ -48,12 +46,8 @@ def test_alphanumeric_input():
 
 def test_all_input():
   # Test random input
-    arr = [
-        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
-        'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
-        'u', 'v', 'w', 'x', 'y', 'z'
-    ]
+    base = string.digits + string.ascii_letters
+    arr = list(base)
     input = "".join(
         random.sample(
             string.ascii_lowercase + string.digits + string.punctuation,
