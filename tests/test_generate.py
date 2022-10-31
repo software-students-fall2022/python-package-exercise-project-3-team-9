@@ -104,3 +104,9 @@ def test_generate_password_all_count():
     assert count_upper >= upper
     assert count_lower >= lower
     assert count_special >= special
+
+
+def test_failure():
+    length = random.randint(1, 100)
+    assert wisdom.generate_password(
+        length, 0, 0, 0, 0) == "ERROR: Password generation failed."
