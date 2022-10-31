@@ -6,7 +6,12 @@ import random
 # ------ TEST GENERATE PASSWORD ------
 def test_generate_password_default():
     # Test the default case
-    assert len(wisdom.generate_password()) == 8
+    password = wisdom.generate_password()
+    assert len(password) == 8
+    assert any(char.isdigit() for char in password)
+    assert any(char.isupper() for char in password)
+    assert any(char.islower() for char in password)
+    assert any(not char.isalnum() for char in password)
 
 
 def test_generate_password_length():
