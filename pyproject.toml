@@ -7,10 +7,10 @@ name = "pypassgen"
 description = "A simple password generator tool with various functions, built with build using setuptools, uploaded to PyPI using twine, and distributed via pip."
 version = "0.0.1"
 authors = [
-  { name="Darren Le", email="qal207@nyu.edu" },
-  { name="Daniel Atlas", email="" },
-  { name="Vincent Xu", email="" },
-  { name="Elyazya Al Kobaisi", email="" }
+  { name="Darren Le", github="https://github.com/DarrenLe20" },
+  { name="Daniel Atlas", github="https://github.com/Spectraorder" },
+  { name="Vincent Xu", github="https://github.com/yx-xyc" },
+  { name="Elyazya Al Kobaisi", github="https://github.com/elyazya" }
 ]
 license = { file = "LICENSE" }
 readme = "README.md"
