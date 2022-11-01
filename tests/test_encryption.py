@@ -3,9 +3,8 @@ from cryptography.fernet import Fernet
 import random
 import string
 
+
 # ------ TEST ENCRYPTION ------
-
-
 def test_empty_input():
     # Test empty input
     key = open(wisdom.getFile("key.txt"), "rb").read()
