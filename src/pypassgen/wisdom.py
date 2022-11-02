@@ -1,13 +1,14 @@
+"""Function Page"""
 import random
 import string
+from os import path
 import cryptography as crypto
 from cryptography.fernet import Fernet
-from os import path
 
 
-def getFile(fileName):
+def get_file(file_name):
     """Returns the absolute path of a file."""
-    return path.join(path.dirname(__file__), fileName)
+    return path.join(path.dirname(__file__), file_name)
 
 
 def generate_password(length=8, num=1, upper=1, lower=1, special=1):
@@ -34,24 +35,24 @@ def generate_password(length=8, num=1, upper=1, lower=1, special=1):
         base = ""
         password = ""
         # add the required number of each character type
-        if (num != 0):
+        if num != 0:
             base += string.digits
             password += ''.join(random.choice(string.digits)
                                 for _ in range(num))
-        if (upper != 0):
+        if upper != 0:
             base += string.ascii_uppercase
             password += ''.join(random.choice(string.ascii_uppercase)
                                 for _ in range(upper))
-        if (lower != 0):
+        if lower != 0:
             base += string.ascii_lowercase
             password += ''.join(random.choice(string.ascii_lowercase)
                                 for _ in range(lower))
-        if (special != 0):
+        if special != 0:
             base += string.punctuation
             password += ''.join(random.choice(string.punctuation)
                                 for _ in range(special))
         # generate the rest of the password if needed
-        if (length - len(password) > 0):
+        if length - len(password) > 0:
             password += ''.join(random.choice(base)
                                 for _ in range(length - len(password)))
         # shuffle the password
@@ -73,7 +74,7 @@ def verify_pass(password=None):
         3 contains numbers
         4 contains special characters
     """
-    if password == None:
+    if password is None:
         print("Invalid input. Please try again.")
         return None
     output = []
@@ -136,7 +137,7 @@ def verify_type(pass_type=[], length=0):
     return pass_str
 
 
-def encryption(str):
+def encryption(origin_password):
     """Encrypt a string using Fernet encryption
 
     Keyword arguments:
@@ -148,14 +149,14 @@ def encryption(str):
     base = string.digits + string.ascii_letters
     arr = list(base)
     str_encrypted = ""
-    for char in str:
+    for char in origin_password:
         if (char.isdigit() or char.isalpha()):
             idx = arr.index(char)
             str_encrypted += arr[(idx+5) % len(arr)]
         else:
             str_encrypted += char
 
-    key = open(getFile("key.txt"), "rb").read()
+    key = open(get_file("key.txt"), "rb").read()
     cipher_suite = Fernet(key)
     encoded_text = cipher_suite.encrypt(
         str_encrypted.encode('utf-8')).decode('utf-8')
@@ -163,7 +164,7 @@ def encryption(str):
     return encoded_text
 
 
-def decryption(str):
+def decryption(decrypted_password):
     """Decrypt a string using Fernet decryption and shifting
 
     Keyword arguments:
@@ -174,10 +175,12 @@ def decryption(str):
     """
     # retrieving key from db + decrypting using Fernet
     key = open(getFile("key.txt"), "rb").read()
+    # retreiving key from db + decrypting using Fernet
+    key = open(get_file("key.txt"), "rb").read()
     cipher_suite = Fernet(key)
     try:
         str_decrypted = (cipher_suite.decrypt(
-            str.encode('utf-8'))).decode('utf-8')
+            decrypted_password.encode('utf-8'))).decode('utf-8')
     except (crypto.fernet.InvalidToken, TypeError):
         return "ERROR: The entered phrase was not encrypted with pypassgen."
     base = string.digits + string.ascii_letters
