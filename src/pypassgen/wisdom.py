@@ -148,7 +148,6 @@ def encryption(origin_password):
     """
     base = string.digits + string.ascii_letters
     arr = list(base)
-    # # print(arr)
     str_encrypted = ""
     for char in origin_password:
         if (char.isdigit() or char.isalpha()):
@@ -159,9 +158,7 @@ def encryption(origin_password):
 
     key = open(get_file("key.txt"), "rb").read()
     cipher_suite = Fernet(key)
-    encoded_text = cipher_suite.encrypt(
-        str_encrypted.encode('utf-8')).decode('utf-8')
-
+    encoded_text = cipher_suite.encrypt(str_encrypted.encode('utf-8'))
     return encoded_text
 
 
@@ -175,7 +172,7 @@ def decryption(decrypted_password):
         A string containing the decrypted and decooded string
     """
     # retreiving key from db + decrypting using Fernet
-    key = open(get_file("key.txt"), "rb").read()
+    key = open(getFile("key.txt"), "rb").read()
     cipher_suite = Fernet(key)
     try:
         str_decrypted = (cipher_suite.decrypt(
@@ -184,7 +181,6 @@ def decryption(decrypted_password):
         return "ERROR: The entered phrase was not encrypted with pypassgen."
     base = string.digits + string.ascii_letters
     arr = list(base)
-    # print(arr)
     # decoding decrypted text by shifting
     decoded_text = ""
     for char in str_decrypted:
