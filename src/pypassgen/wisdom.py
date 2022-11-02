@@ -146,7 +146,7 @@ def encryption(str):
     """
     base = string.digits + string.ascii_letters
     arr = list(base)
-    print(arr)
+    # print(arr)
     str_encrypted = ""
     for char in str:
         if (char.isdigit() or char.isalpha()):
@@ -177,7 +177,8 @@ def decryption(str):
     str_decrypted = (cipher_suite.decrypt(str)).decode('utf-8')
     base = string.digits + string.ascii_letters
     arr = list(base)
-    print(arr)
+    # print(arr)
+
     # decoding decrypted text by shifting
     decoded_text = ""
     for char in str_decrypted:
