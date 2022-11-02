@@ -159,6 +159,9 @@ def encryption(origin_password):
     key = open(get_file("key.txt"), "rb").read()
     cipher_suite = Fernet(key)
     encoded_text = cipher_suite.encrypt(str_encrypted.encode('utf-8'))
+    encoded_text = cipher_suite.encrypt(
+        str_encrypted.encode('utf-8')).decode('utf-8')
+
     return encoded_text
 
 
