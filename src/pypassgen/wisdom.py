@@ -1,5 +1,6 @@
 import random
 import string
+import cryptography as crypto
 from cryptography.fernet import Fernet
 from os import path
 
@@ -157,6 +158,7 @@ def encryption(str):
     key = open(getFile("key.txt"), "rb").read()
     cipher_suite = Fernet(key)
     encoded_text = cipher_suite.encrypt(str_encrypted.encode('utf-8'))
+
     return encoded_text
 
 
@@ -172,7 +174,11 @@ def decryption(str):
     # retrieving key from db + decrypting using Fernet
     key = open(getFile("key.txt"), "rb").read()
     cipher_suite = Fernet(key)
-    str_decrypted = (cipher_suite.decrypt(str)).decode('utf-8')
+    try:
+        str_decrypted = (cipher_suite.decrypt(str)).decode('utf-8')
+    except (crypto.fernet.InvalidToken, TypeError):
+        # catch invalid token
+        return "ERROR: The entered phrase was not encrypted with pypassgen."
     base = string.digits + string.ascii_letters
     arr = list(base)
     # decoding decrypted text by shifting
