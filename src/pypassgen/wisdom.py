@@ -146,7 +146,6 @@ def encryption(str):
     """
     base = string.digits + string.ascii_letters
     arr = list(base)
-    # print(arr)
     str_encrypted = ""
     for char in str:
         if (char.isdigit() or char.isalpha()):
@@ -158,7 +157,6 @@ def encryption(str):
     key = open(getFile("key.txt"), "rb").read()
     cipher_suite = Fernet(key)
     encoded_text = cipher_suite.encrypt(str_encrypted.encode('utf-8'))
-
     return encoded_text
 
 
@@ -171,13 +169,12 @@ def decryption(str):
     Returns:
         A string containing the decrypted and decooded string
     """
-    # retreiving key from db + decrypting using Fernet
+    # retrieving key from db + decrypting using Fernet
     key = open(getFile("key.txt"), "rb").read()
     cipher_suite = Fernet(key)
     str_decrypted = (cipher_suite.decrypt(str)).decode('utf-8')
     base = string.digits + string.ascii_letters
     arr = list(base)
-    # print(arr)
     # decoding decrypted text by shifting
     decoded_text = ""
     for char in str_decrypted:
