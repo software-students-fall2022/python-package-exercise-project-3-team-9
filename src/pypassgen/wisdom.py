@@ -1,7 +1,6 @@
 """Function Page"""
 import random
 import string
-from os import path
 import cryptography as crypto
 from cryptography.fernet import Fernet
 
