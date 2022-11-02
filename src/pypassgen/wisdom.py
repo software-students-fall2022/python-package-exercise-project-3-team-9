@@ -172,9 +172,9 @@ def decryption(decrypted_password):
         A string containing the decrypted and decooded string
     """
     # retrieving key from db + decrypting using Fernet
-    key = open(getFile("key.txt"), "rb").read()
+    key = open(get_file("key.txt"), "rb").read()
     # retreiving key from db + decrypting using Fernet
-    key = open(getFile("key.txt"), "rb").read()
+    key = open(get_file("key.txt"), "rb").read()
     cipher_suite = Fernet(key)
     try:
         str_decrypted = (cipher_suite.decrypt(
