@@ -178,6 +178,7 @@ def decryption(str):
     base = string.digits + string.ascii_letters
     arr = list(base)
     # print(arr)
+
     # decoding decrypted text by shifting
     decoded_text = ""
     for char in str_decrypted:
