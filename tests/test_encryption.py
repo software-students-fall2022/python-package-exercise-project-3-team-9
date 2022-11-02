@@ -28,8 +28,8 @@ def test_alphanumeric_input():
     arr = list(base)
     input = "".join(
         random.sample(
-            string.ascii_lowercase + string.digits,
-            len(string.ascii_lowercase + string.digits),
+            string.ascii_letters + string.digits,
+            len(string.ascii_letters + string.digits),
         )
     )
     print("Input: " + input)
@@ -49,8 +49,8 @@ def test_all_input():
     arr = list(base)
     input = "".join(
         random.sample(
-            string.ascii_lowercase + string.digits + string.punctuation,
-            len(string.ascii_lowercase + string.digits + string.punctuation),
+            string.ascii_letters + string.digits + string.punctuation,
+            len(string.ascii_letters + string.digits + string.punctuation),
         )
     )
     print("Input: " + input)
