@@ -4,8 +4,10 @@ import string
 from cryptography.fernet import Fernet
 from src.pypassgen import wisdom
 
+
 class Tests:
     """Test Class"""
+
     def test_empty_input(self):
         """
         Test empty input
@@ -13,8 +15,8 @@ class Tests:
         key = open(wisdom.get_file("key.txt"), "rb").read()
         cipher_suite = Fernet(key)
         encoded_str = wisdom.encryption("")
-        assert (cipher_suite.decrypt(encoded_str.encode("utf-8"))).decode("utf-8") == ""
-
+        assert (cipher_suite.decrypt(
+            encoded_str.encode("utf-8"))).decode("utf-8") == ""
 
     def test_special_input(self):
         """
@@ -22,10 +24,11 @@ class Tests:
         """
         key = open(wisdom.get_file("key.txt"), "rb").read()
         cipher_suite = Fernet(key)
-        input_str = "".join(random.sample(string.punctuation, len(string.punctuation)))
+        input_str = "".join(random.sample(
+            string.punctuation, len(string.punctuation)))
         encoded_str = wisdom.encryption(input_str)
-        assert (cipher_suite.decrypt(encoded_str.encode("utf-8"))).decode("utf-8") == input_str
-
+        assert (cipher_suite.decrypt(encoded_str.encode("utf-8"))
+                ).decode("utf-8") == input_str
 
     def test_alphanumeric_input(self):
         """
@@ -47,8 +50,8 @@ class Tests:
         key = open(wisdom.get_file("key.txt"), "rb").read()
         cipher_suite = Fernet(key)
         encoded_str = wisdom.encryption(input_str)
-        assert (cipher_suite.decrypt(encoded_str.encode("utf-8"))).decode("utf-8") == str_encrypted
-
+        assert (cipher_suite.decrypt(encoded_str.encode("utf-8"))
+                ).decode("utf-8") == str_encrypted
 
     def test_all_input(self):
         """
@@ -73,4 +76,5 @@ class Tests:
         key = open(wisdom.get_file("key.txt"), "rb").read()
         cipher_suite = Fernet(key)
         encoded_str = wisdom.encryption(input_str)
-        assert (cipher_suite.decrypt(encoded_str.encode("utf-8"))).decode("utf-8") == str_encrypted
+        assert (cipher_suite.decrypt(encoded_str.encode("utf-8"))
+                ).decode("utf-8") == str_encrypted
