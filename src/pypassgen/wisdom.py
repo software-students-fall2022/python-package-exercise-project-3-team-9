@@ -178,7 +178,7 @@ def decryption(decrypted_password):
     cipher_suite = Fernet(key)
     try:
         str_decrypted = (cipher_suite.decrypt(
-            str.encode('utf-8'))).decode('utf-8')
+            decrypted_password.encode('utf-8'))).decode('utf-8')
     except (crypto.fernet.InvalidToken, TypeError):
         return "ERROR: The entered phrase was not encrypted with pypassgen."
     base = string.digits + string.ascii_letters
