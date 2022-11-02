@@ -10,7 +10,7 @@ class Tests:
         """
         Test empty input
         """
-        key = open(wisdom.getFile("key.txt"), "rb").read()
+        key = open(wisdom.get_file("key.txt"), "rb").read()
         cipher_suite = Fernet(key)
         encoded_str = wisdom.encryption("")
         assert (cipher_suite.decrypt(encoded_str.encode("utf-8"))).decode("utf-8") == ""
@@ -20,7 +20,7 @@ class Tests:
         """
         Test special characters
         """
-        key = open(wisdom.getFile("key.txt"), "rb").read()
+        key = open(wisdom.get_file("key.txt"), "rb").read()
         cipher_suite = Fernet(key)
         input_str = "".join(random.sample(string.punctuation, len(string.punctuation)))
         encoded_str = wisdom.encryption(input_str)
@@ -44,7 +44,7 @@ class Tests:
         for char in input_str:
             idx = arr.index(char)
             str_encrypted += arr[(idx+5) % len(arr)]
-        key = open(wisdom.getFile("key.txt"), "rb").read()
+        key = open(wisdom.get_file("key.txt"), "rb").read()
         cipher_suite = Fernet(key)
         encoded_str = wisdom.encryption(input_str)
         assert (cipher_suite.decrypt(encoded_str.encode("utf-8"))).decode("utf-8") == str_encrypted
@@ -70,7 +70,7 @@ class Tests:
                 str_encrypted += arr[(idx+5) % len(arr)]
             else:
                 str_encrypted += char
-        key = open(wisdom.getFile("key.txt"), "rb").read()
+        key = open(wisdom.get_file("key.txt"), "rb").read()
         cipher_suite = Fernet(key)
         encoded_str = wisdom.encryption(input_str)
         assert (cipher_suite.decrypt(encoded_str.encode("utf-8"))).decode("utf-8") == str_encrypted
