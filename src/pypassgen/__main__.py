@@ -47,7 +47,7 @@ def main():
             print()
         elif (choice == "3"):
             phrase = input("Enter the phrase to encrypt: ")
-            print("Your encrypted phrase is: ", end=" ")
+            print("Your encrypted phrase is: ", end="\n")
             print(wisdom.encryption(phrase))
             print()
         elif (choice == "4"):
