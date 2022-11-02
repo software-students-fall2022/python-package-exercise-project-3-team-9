@@ -6,7 +6,6 @@ import cryptography as crypto
 from cryptography.fernet import Fernet
 
 
-
 def get_file(file_name):
     """Returns the absolute path of a file."""
     return path.join(path.dirname(__file__), file_name)
@@ -149,7 +148,7 @@ def encryption(origin_password):
     """
     base = string.digits + string.ascii_letters
     arr = list(base)
-    # print(arr)
+    # # print(arr)
     str_encrypted = ""
     for char in origin_password:
         if (char.isdigit() or char.isalpha()):
@@ -160,7 +159,8 @@ def encryption(origin_password):
 
     key = open(get_file("key.txt"), "rb").read()
     cipher_suite = Fernet(key)
-    encoded_text = cipher_suite.encrypt(str_encrypted.encode('utf-8')).decode('utf-8')
+    encoded_text = cipher_suite.encrypt(
+        str_encrypted.encode('utf-8')).decode('utf-8')
 
     return encoded_text
 
@@ -178,13 +178,13 @@ def decryption(decrypted_password):
     key = open(get_file("key.txt"), "rb").read()
     cipher_suite = Fernet(key)
     try:
-        str_decrypted = (cipher_suite.decrypt(decrypted_password.encode('utf-8'))).decode('utf-8')
+        str_decrypted = (cipher_suite.decrypt(
+            decrypted_password.encode('utf-8'))).decode('utf-8')
     except (crypto.fernet.InvalidToken, TypeError):
         return "ERROR: The entered phrase was not encrypted with pypassgen."
     base = string.digits + string.ascii_letters
     arr = list(base)
     # print(arr)
-
     # decoding decrypted text by shifting
     decoded_text = ""
     for char in str_decrypted:
