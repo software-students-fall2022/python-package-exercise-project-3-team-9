@@ -8,9 +8,9 @@ from src.pypassgen import wisdom
 class Tests:
   # ------ TEST ENCRYPTION ------
     def test_empty_input(self):
-        '''
+        """
         Test empty input
-        '''
+        """
         key = open(wisdom.getFile("key.txt"), "rb").read()
         cipher_suite = Fernet(key)
         encoded_str = wisdom.encryption("")
@@ -18,9 +18,9 @@ class Tests:
             encoded_str.encode("utf-8"))).decode("utf-8") == ""
 
     def test_special_input(self):
-        '''
+        """
         Test special characters
-        '''
+        """
         key = open(wisdom.getFile("key.txt"), "rb").read()
         cipher_suite = Fernet(key)
         input_str = "".join(random.sample(
@@ -30,9 +30,9 @@ class Tests:
                 ).decode("utf-8") == input_str
 
     def test_alphanumeric_input(self):
-        '''
+        """
         Test random input
-        '''
+        """
         base = string.digits + string.ascii_letters
         arr = list(base)
         input_str = "".join(
@@ -53,9 +53,9 @@ class Tests:
                 ).decode("utf-8") == str_encrypted
 
     def test_all_input(self):
-        '''
+        """
         Test random input
-        '''
+        """
         base = string.digits + string.ascii_letters
         arr = list(base)
         input_str = "".join(
