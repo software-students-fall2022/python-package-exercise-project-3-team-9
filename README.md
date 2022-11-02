@@ -37,6 +37,7 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
     ```
 
   - This will initialize the package and prompt the user to choose their desired function.
+
     ```bash
     Welcome to pypassgen - your simple and lightweight password generator!
     1. Generate a password
@@ -55,11 +56,15 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
 
   - Enter the minimal number of different character types you want to include in your password (default is 1), or enter `0` to exclude them.
 
+  - The generated password will be printed to the terminal.
+
 - **_Verify a password:_**
 
   - When prompted, enter `2` to start the password verifier.
 
   - Enter the password you want to verify.
+
+  - The package will print to the terminal whether the password is secure or not and what criteria it fulfills.
 
 - **_Encrypt a string:_**
 
@@ -67,11 +72,15 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
 
   - Enter the string you want to encrypt.
 
+  - The encrypted string will be printed to the terminal.
+
 - **_Decrypt an encrypted string:_**
 
   - When prompted, enter `4` to start the decryption process.
 
   - Enter the encrypted string you want to decrypt.
+  
+  - The decrypted string will be printed to the terminal.
 
 ## Using the package as a module in a Python project
 
@@ -103,13 +112,32 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
 
     ```python
     # in your project
-    password = wisdom.generate_password(length=8, num=2, upper=2, lower=2, special=2)
+    password = wisdom.generate_password(8, 2, 2, 2, 2)
 
     print(password)
-    # C0?8yOa)
+    # Xq}tT/29
     ```
 
 - **_Verify a password:_**
+
+  - Call the `verify_password` function and pass the password you want to verify as an argument.
+
+    ```python
+    # in pypassgen.wisdom
+    verify_pass(password=None)
+    verify_type(pass_type=[], length=0):
+    ```
+
+    For example:
+
+    ```python
+    # in your project
+    password = "Xq}tT/29"
+
+    print(wisdom.verify_type(wisdom.verify_pass(pass_str), len(pass_str)))
+    # Very Strong Password
+    # It has at least one uppercase, number, special character, lowercase.
+    ```
 
 - **_Encrypt a string:_**
 
@@ -131,6 +159,23 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
     ```
 
 - **_Decrypt an encrypted string:_**
+
+  - Call the `decryption` function and pass the encrypted string as argument:
+
+    ```python
+    # in pypassgen.wisdom
+    decryption(str)
+    ```
+
+    For example:
+
+    ```python
+    # in your project
+    decoded = wisdom.decryption(encoded)
+
+    print(decoded)
+    # hello world!
+    ```
 
 ## Contributors
 

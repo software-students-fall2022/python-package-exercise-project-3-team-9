@@ -144,12 +144,9 @@ def encryption(str):
     Returns:
         A string containing the encrypted and encoded string
     """
-    arr = [
-        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
-        'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
-        'u', 'v', 'w', 'x', 'y', 'z'
-    ]
+    base = string.digits + string.ascii_letters
+    arr = list(base)
+    print(arr)
     str_encrypted = ""
     for char in str:
         if (char.isdigit() or char.isalpha()):
@@ -177,14 +174,10 @@ def decryption(str):
     # retreiving key from db + decrypting using Fernet
     key = open(getFile("key.txt"), "rb").read()
     cipher_suite = Fernet(key)
-    str_decrypted = cipher_suite.decrypt(str.decode('utf-8'))
-
-    arr = [
-        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
-        'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
-        'u', 'v', 'w', 'x', 'y', 'z'
-    ]
+    str_decrypted = (cipher_suite.decrypt(str)).decode('utf-8')
+    base = string.digits + string.ascii_letters
+    arr = list(base)
+    print(arr)
     # decoding decrypted text by shifting
     decoded_text = ""
     for char in str_decrypted:
