@@ -51,12 +51,21 @@ def main():
         elif choice == "3":
             phrase = input("Enter the phrase to encrypt: ")
 <<<<<<< HEAD
+<<<<<<< HEAD
             print("Your encrypted phrase is: ",
                   wisdom.encryption(phrase).decode("utf-8"))
 =======
             print("Your encrypted phrase is: ", end="\n")
             print(wisdom.encryption(phrase))
 >>>>>>> 0dfd24c (fix decryption bug: report error on all input)
+=======
+            print("Your encrypted phrase is: ", end="\n")
+            print(wisdom.encryption(phrase))
+=======
+            print("Your encrypted phrase is: ",
+                  wisdom.encryption(phrase).decode("utf-8"))
+>>>>>>> a6945ec (minor fix)
+>>>>>>> 1c6da1b (minor fix)
             print()
         elif choice == "4":
             phrase = input("Enter the phrase to decrypt: ")
