@@ -191,5 +191,4 @@ def decryption(decrypted_password):
             decoded_text += arr[(idx-5) % len(arr)]
         else:
             decoded_text += char
-
     return decoded_text
