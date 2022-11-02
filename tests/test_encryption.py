@@ -1,15 +1,15 @@
-import pytest
-import src.pypassgen.wisdom as wisdom
-from cryptography.fernet import Fernet
+""" ------ TEST ENCRYPTION ------ """
 import random
 import string
+from cryptography.fernet import Fernet
+from src.pypassgen import wisdom
 
 class Tests:
-# ------ TEST ENCRYPTION ------
+    """Test Class"""
     def test_empty_input(self):
-        '''
+        """
         Test empty input
-        '''
+        """
         key = open(wisdom.getFile("key.txt"), "rb").read()
         cipher_suite = Fernet(key)
         encoded_str = wisdom.encryption("")
@@ -17,9 +17,9 @@ class Tests:
 
 
     def test_special_input(self):
-        '''
+        """
         Test special characters
-        '''
+        """
         key = open(wisdom.getFile("key.txt"), "rb").read()
         cipher_suite = Fernet(key)
         input_str = "".join(random.sample(string.punctuation, len(string.punctuation)))
@@ -28,9 +28,9 @@ class Tests:
 
 
     def test_alphanumeric_input(self):
-        '''
+        """
         Test random input
-        '''
+        """
         base = string.digits + string.ascii_letters
         arr = list(base)
         input_str = "".join(
@@ -51,9 +51,9 @@ class Tests:
 
 
     def test_all_input(self):
-        '''
+        """
         Test random input
-        '''
+        """
         base = string.digits + string.ascii_letters
         arr = list(base)
         input_str = "".join(
