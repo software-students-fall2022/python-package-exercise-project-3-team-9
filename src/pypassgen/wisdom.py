@@ -158,6 +158,7 @@ def encryption(origin_password):
 
     key = open(get_file("key.txt"), "rb").read()
     cipher_suite = Fernet(key)
+    encoded_text = cipher_suite.encrypt(str_encrypted.encode('utf-8'))
     encoded_text = cipher_suite.encrypt(
         str_encrypted.encode('utf-8')).decode('utf-8')
 
@@ -178,8 +179,7 @@ def decryption(decrypted_password):
     cipher_suite = Fernet(key)
     try:
         str_decrypted = (cipher_suite.decrypt(
-            str.encode('utf-8'))).decode('utf-8')
-        str_decrypted = (cipher_suite.decrypt(str)).decode('utf-8')
+            decrypted_password.encode('utf-8'))).decode('utf-8')
     except (crypto.fernet.InvalidToken, TypeError):
         return "ERROR: The entered phrase was not encrypted with pypassgen."
     base = string.digits + string.ascii_letters
@@ -192,5 +192,4 @@ def decryption(decrypted_password):
             decoded_text += arr[(idx-5) % len(arr)]
         else:
             decoded_text += char
-
     return decoded_text
