@@ -99,6 +99,10 @@ class Tests:
             )
         )
         # print("Input: " + input_str)
+        str_encrypted = ""
+        for char in input_str:
+            idx = arr.index(char)
+            str_encrypted += arr[(idx+5) % len(arr)]
         key = open(passwordpack.get_file("key.txt"), "rb").read()
         cipher_suite = Fernet(key)
         encoded_str = cipher_suite.encrypt(str_encrypted.encode('utf-8')).decode('utf-8')
@@ -141,4 +145,5 @@ class Tests:
                 len(string.ascii_letters + string.digits + string.punctuation),
             )
         )
-        assert passwordpack.decryption(input_str) == "ERROR: The entered phrase was not encrypted with pypassgen."
+        assert passwordpack.decryption(
+            input_str) == "ERROR: The entered phrase was not encrypted with pypassgen."
