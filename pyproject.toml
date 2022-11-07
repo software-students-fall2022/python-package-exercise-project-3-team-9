@@ -32,4 +32,4 @@ dev = ["pytest"]
 "Bug Tracker" = "https://github.com/software-students-fall2022/python-package-exercise-project-3-team-9/issues"
 
 [project.scripts]
-wisdom = "wisdom.__main__:main"
+passwordpack = "passwordpack.__main__:main"
