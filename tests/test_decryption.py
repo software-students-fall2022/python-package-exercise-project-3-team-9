@@ -5,7 +5,6 @@ from cryptography.fernet import Fernet
 from src.pypassgen import passwordpack
 
 
-
 class Tests:
     # ------ TEST DECRYPTION ------
     def test_encrypted_empty_input(self):
@@ -17,7 +16,6 @@ class Tests:
         encoded_str = cipher_suite.encrypt("".encode('utf-8')).decode('utf-8')
         decoded_str = passwordpack.decryption(encoded_str)
         assert decoded_str == ""
-        
 
     def test_encrypted_lower_input(self):
         """
@@ -37,7 +35,6 @@ class Tests:
             str_encrypted.encode('utf-8')).decode('utf-8')
         decoded_str = passwordpack.decryption(encoded_str)
         assert decoded_str == input_str
-        
 
     def test_encrypted_upper_input(self):
         """
@@ -57,7 +54,6 @@ class Tests:
             str_encrypted.encode('utf-8')).decode('utf-8')
         decoded_str = passwordpack.decryption(encoded_str)
         assert decoded_str == input_str
-
 
     def test_encrypted_num_input(self):
         """
