@@ -17,7 +17,7 @@ class Tests:
         # Test the num parameter
         num = random.randint(1, 100)
         length = random.randint(1, 100)
-        password = wisdom.generate_password(length, num, 0, 0, 0)
+        password = passwordpack.generate_password(length, num, 0, 0, 0)
         count = 0
         for char in password:
             if char.isdigit():
@@ -25,23 +25,24 @@ class Tests:
         assert len(password) <= count
         assert any(char.isdigit() for char in password)
 
-    def test_generate_password_upper(self):
-        # Test the upper parameter
-        upper = random.randint(1, 100)
-        length = random.randint(1, 100)
-        password = wisdom.generate_password(length, 0, upper, 0, 0)
-        count = 0
-        for char in password:
-            if char.isupper():
-                count += 1
-        assert len(password) <= count
-        assert any(char.isupper() for char in password)
+
+def test_generate_password_num():
+    # Test the num parameter
+    num = random.randint(1, 100)
+    length = random.randint(1, 100)
+    password = passwordpack.generate_password(length, num, 0, 0, 0)
+    count = 0
+    for char in password:
+        if char.isdigit():
+            count += 1
+    assert len(password) <= count
+    assert any(char.isdigit() for char in password)
 
     def test_generate_password_lower(self):
         # Test the lower parameter
         lower = random.randint(1, 100)
         length = random.randint(1, 100)
-        password = wisdom.generate_password(length, 0, 0, lower, 0)
+        password = passwordpack.generate_password(length, 0, 0, lower, 0)
         count = 0
         for char in password:
             if char.islower():
@@ -49,17 +50,64 @@ class Tests:
         assert len(password) <= count
         assert any(char.islower() for char in password)
 
-    def test_generate_password_special(self):
-        # Test the special parameter
-        special = random.randint(1, 100)
+
+def test_generate_password_upper():
+    # Test the upper parameter
+    upper = random.randint(1, 100)
+    length = random.randint(1, 100)
+    password = passwordpack.generate_password(length, 0, upper, 0, 0)
+    count = 0
+    for char in password:
+        if char.isupper():
+            count += 1
+    assert len(password) <= count
+    assert any(char.isupper() for char in password)
+
+    def test_generate_password_all_accuracy(self):
+        # Test all parameters
         length = random.randint(1, 100)
-        password = wisdom.generate_password(length, 0, 0, 0, special)
-        count = 0
-        for char in password:
-            if not char.isalnum():
-                count += 1
-        assert len(password) <= count
+        num = random.randint(1, 100)
+        upper = random.randint(1, 100)
+        lower = random.randint(1, 100)
+        special = random.randint(1, 100)
+        password = passwordpack.generate_password(
+            length, num, upper, lower, special)
+        assert len(password) >= length
+        assert any(char.isdigit() for char in password)
+        assert any(char.isupper() for char in password)
+        assert any(char.islower() for char in password)
         assert any(not char.isalnum() for char in password)
+
+
+def test_generate_password_lower():
+    # Test the lower parameter
+    lower = random.randint(1, 100)
+    length = random.randint(1, 100)
+    password = passwordpack.generate_password(length, 0, 0, lower, 0)
+    count = 0
+    for char in password:
+        if char.islower():
+            count += 1
+    assert len(password) <= count
+    assert any(char.islower() for char in password)
+
+    def test_failure(self):
+        length = random.randint(1, 100)
+        assert passwordpack.generate_password(
+            length, 0, 0, 0, 0) == "ERROR: Password generation failed."
+
+
+def test_generate_password_special():
+    # Test the special parameter
+    special = random.randint(1, 100)
+    length = random.randint(1, 100)
+    password = passwordpack.generate_password(length, 0, 0, 0, special)
+    count = 0
+    for char in password:
+        if not char.isalnum():
+            count += 1
+    assert len(password) <= count
+    assert any(not char.isalnum() for char in password)
 
     def test_generate_password_all_accuracy(self):
         # Test all parameters
