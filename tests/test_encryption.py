@@ -1,9 +1,8 @@
 """ ------ TEST ENCRYPTION ------ """
 import random
 import string
+import src.pypassgen.passwordpack as passwordpack
 from cryptography.fernet import Fernet
-from src.pypassgen.passwordpack import passwordpack
-
 
 class Tests:
   # ------ TEST ENCRYPTION ------
