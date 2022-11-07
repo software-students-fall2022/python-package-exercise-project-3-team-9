@@ -89,9 +89,9 @@ class Tests:
         for char in input_str:
             idx = arr.index(char)
             str_encrypted += arr[(idx+5) % len(arr)]
-        key = open(wisdom.get_file("key.txt"), "rb").read()
+        key = open(passwordpack.get_file("key.txt"), "rb").read()
         cipher_suite = Fernet(key)
-        encoded_str = wisdom.encryption(input_str)
+        encoded_str = passwordpack.encryption(input_str)
         assert (cipher_suite.decrypt(encoded_str.encode('utf-8'))).decode('utf-8') == str_encrypted
      
     def test_upper_input(self):
@@ -106,9 +106,9 @@ class Tests:
         for char in input_str:
             idx = arr.index(char)
             str_encrypted += arr[(idx+5) % len(arr)]
-        key = open(wisdom.get_file("key.txt"), "rb").read()
+        key = open(passwordpack.get_file("key.txt"), "rb").read()
         cipher_suite = Fernet(key)
-        encoded_str = wisdom.encryption(input_str)
+        encoded_str = passwordpack.encryption(input_str)
         assert (cipher_suite.decrypt(encoded_str.encode('utf-8'))
                 ).decode('utf-8') == str_encrypted
 
@@ -124,8 +124,8 @@ class Tests:
         for char in input_str:
             idx = arr.index(char)
             str_encrypted += arr[(idx+5) % len(arr)]
-        key = open(wisdom.get_file("key.txt"), "rb").read()
+        key = open(passwordpack.get_file("key.txt"), "rb").read()
         cipher_suite = Fernet(key)
-        encoded_str = wisdom.encryption(input_str)
+        encoded_str = passwordpack.encryption(input_str)
         assert (cipher_suite.decrypt(encoded_str.encode('utf-8'))
                 ).decode('utf-8') == str_encrypted
