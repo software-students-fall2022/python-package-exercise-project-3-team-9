@@ -94,7 +94,7 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
 - Create a Python program that imports the package and its functions:
 
   ```python
-  from pypassgen import wisdom
+  from pypassgen import passwordpack
   ```
 
 ### Functions
@@ -105,7 +105,7 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
   - Pass in `0` if you don't want the password to include specific character types.
 
     ```python
-    # in pypassgen.wisdom
+    # in pypassgen.passwordpack
     generate_password(length=8, num=1, upper=1, lower=1, special=1)
     ```
 
@@ -113,7 +113,7 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
 
     ```python
     # in your project
-    password = wisdom.generate_password(8, 2, 2, 2, 2)
+    password = passwordpack.generate_password(8, 2, 2, 2, 2)
 
     print(password)
     # Xq}tT/29
@@ -124,7 +124,7 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
   - Call the `verify_password` function and pass the password you want to verify as an argument.
 
     ```python
-    # in pypassgen.wisdom
+    # in pypassgen.passwordpack
     verify_pass(password=None)
     verify_type(pass_type=[], length=0):
     ```
@@ -135,7 +135,7 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
     # in your project
     password = "Xq}tT/29"
 
-    print(wisdom.verify_type(wisdom.verify_pass(pass_str), len(pass_str)))
+    print(passwordpack.verify_type(passwordpack.verify_pass(pass_str), len(pass_str)))
     # Very Strong Password
     # It has at least one uppercase, number, special character, lowercase.
     ```
@@ -145,7 +145,7 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
   - Call the `encryption` function and pass the string to be encrypted as argument:
 
     ```python
-    # in pypassgen.wisdom
+    # in pypassgen.passwordpack
     encryption(str)
     ```
 
@@ -153,7 +153,7 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
 
     ```python
     # in your project
-    encoded = wisdom.encrypted = wisdom.encryption("hello world!")
+    encoded = passwordpack.encrypted = passwordpack.encryption("hello world!")
 
     print(encoded)
     # b'gAAAAABjXHQVlraVKy6okfj11o0h0AEqAG8caemLAKEdRCmsrO84_5iG_UatAna5JdWBjZWuJImP8f0K627DmeNkU1a3VlhFvg=='
@@ -164,7 +164,7 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
   - Call the `decryption` function and pass the encrypted string as argument:
 
     ```python
-    # in pypassgen.wisdom
+    # in pypassgen.passwordpack
     decryption(str)
     ```
 
@@ -172,7 +172,7 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
 
     ```python
     # in your project
-    decoded = wisdom.decryption(encoded)
+    decoded = passwordpack.decryption(encoded)
 
     print(decoded)
     # hello world!
