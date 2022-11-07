@@ -1,4 +1,4 @@
-import pypassgen.pypassgen as pypassgen
+import pypassgen.passwordpack as passwordpack
 import random
 
 # ------ TEST VERIFICATION ------
@@ -8,8 +8,8 @@ def test_verify_very_strong():
     upper = random.randint(1, 100)
     lower = random.randint(1, 100)
     special = random.randint(1, 100)
-    password = pypassgen.generate_password(length, num, upper, lower, special)
-    assert pypassgen.verify_type(pypassgen.verify_pass(password), len(password))
+    password = passwordpack.generate_password(length, num, upper, lower, special)
+    assert passwordpack.verify_type(passwordpack.verify_pass(password), len(password))
 
 
 def test_verify_strong_withoutnum():
@@ -17,8 +17,8 @@ def test_verify_strong_withoutnum():
     upper = random.randint(1, 100)
     lower = random.randint(1, 100)
     special = random.randint(1, 100)
-    password = pypassgen.generate_password(length, 0, upper, lower, special)
-    assert pypassgen.verify_type(pypassgen.verify_pass(password), len(password))
+    password = passwordpack.generate_password(length, 0, upper, lower, special)
+    assert passwordpack.verify_type(passwordpack.verify_pass(password), len(password))
 
 
 def test_verify_strong_withoutupper():
@@ -26,8 +26,8 @@ def test_verify_strong_withoutupper():
     num = random.randint(1, 100)
     lower = random.randint(1, 100)
     special = random.randint(1, 100)
-    password = pypassgen.generate_password(length, num, 0, lower, special)
-    assert pypassgen.verify_type(pypassgen.verify_pass(password), len(password))
+    password = passwordpack.generate_password(length, num, 0, lower, special)
+    assert passwordpack.verify_type(passwordpack.verify_pass(password), len(password))
 
 
 def test_verify_strong_withoutlower():
@@ -35,8 +35,8 @@ def test_verify_strong_withoutlower():
     num = random.randint(1, 100)
     upper = random.randint(1, 100)
     special = random.randint(1, 100)
-    password = pypassgen.generate_password(length, num, upper, 0, special)
-    assert pypassgen.verify_type(pypassgen.verify_pass(password), len(password))
+    password = passwordpack.generate_password(length, num, upper, 0, special)
+    assert passwordpack.verify_type(passwordpack.verify_pass(password), len(password))
 
 
 def test_verify_strong_withoutspecial():
@@ -44,8 +44,8 @@ def test_verify_strong_withoutspecial():
     num = random.randint(1, 100)
     upper = random.randint(1, 100)
     lower = random.randint(1, 100)
-    password = pypassgen.generate_password(length, num, upper, lower, 0)
-    assert pypassgen.verify_type(pypassgen.verify_pass(password), len(password))
+    password = passwordpack.generate_password(length, num, upper, lower, 0)
+    assert passwordpack.verify_type(passwordpack.verify_pass(password), len(password))
 
 
 def test_verify_weak():
@@ -54,5 +54,5 @@ def test_verify_weak():
     upper = random.randint(1, 100)
     lower = random.randint(1, 100)
     special = random.randint(1, 100)
-    password = pypassgen.generate_password(length, num, upper, lower, special)
-    assert pypassgen.verify_type(pypassgen.verify_pass(password), len(password))
+    password = passwordpack.generate_password(length, num, upper, lower, special)
+    assert passwordpack.verify_type(passwordpack.verify_pass(password), len(password))
