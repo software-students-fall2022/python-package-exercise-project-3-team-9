@@ -1,5 +1,5 @@
 """Main program page"""
-import pypassgen
+import passwordpack
 
 
 def menu():
@@ -42,21 +42,22 @@ def main():
                 lower = default_lower
             if special == "":
                 special = default_special
-            print("Your password is: " + pypassgen.generate_password(int(length),
+            print("Your password is: " + passwordpack.generate_password(int(length),
                   int(digit), int(upper), int(lower), int(special)) + "\n")
         elif choice == "2":
             pass_str = input("Enter your password: ")
-            print(pypassgen.verify_type(
-                pypassgen.verify_pass(pass_str), len(pass_str)))
+            print(passwordpack.verify_type(
+                passwordpack.verify_pass(pass_str), len(pass_str)))
             print()
         elif choice == "3":
             phrase = input("Enter the phrase to encrypt: ")
-            print("Your encrypted phrase is: ",
-                  wisdom.encryption(phrase) + "\n")
+            print("Your encrypted phrase is: ", end="\n")
+            print(passwordpack.encryption(phrase))
+            print()
         elif choice == "4":
             phrase = input("Enter the phrase to decrypt: ")
             print("Your decrypted phrase is: " +
-                  pypassgen.decryption(phrase) + "\n")
+                  passwordpack.decryption(phrase) + "\n")
         elif choice == "5":
             print("Goodbye!\n")
         else:

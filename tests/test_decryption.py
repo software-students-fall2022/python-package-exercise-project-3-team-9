@@ -1,4 +1,4 @@
-import pypassgen.pypassgen as pypassgen
+import pypassgen as passwordpack
 from cryptography.fernet import Fernet
 import random
 import string
