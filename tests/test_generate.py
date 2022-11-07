@@ -1,4 +1,4 @@
-import pypassgen.passwordpack as passwordpack
+import src.pypassgen as passwordpack
 import random
 
 
