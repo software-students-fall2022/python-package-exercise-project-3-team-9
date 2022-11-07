@@ -3,7 +3,6 @@ from cryptography.fernet import Fernet
 import random
 import string
 from cryptography.fernet import Fernet
-from src.pypassgen import wisdom
 
 
 class Tests:
@@ -12,10 +11,10 @@ class Tests:
         """
         Test encrypted empty input
         """
-        key = open(wisdom.get_file("key.txt"), "rb").read()
+        key = open(passwordpack.get_file("key.txt"), "rb").read()
         cipher_suite = Fernet(key)
         encoded_str = cipher_suite.encrypt("".encode('utf-8')).decode('utf-8')
-        decoded_str = wisdom.decryption(encoded_str)
+        decoded_str = passwordpack.decryption(encoded_str)
         assert decoded_str == ""
 
     def test_encrypted_lower_input(self):
@@ -37,13 +36,13 @@ class Tests:
         """
         Test encrypted special characters
         """
-        key = open(wisdom.get_file("key.txt"), "rb").read()
+        key = open(passwordpack.get_file("key.txt"), "rb").read()
         cipher_suite = Fernet(key)
         input_str = "".join(random.sample(
             string.punctuation, len(string.punctuation)))
         encoded_str = cipher_suite.encrypt(
             input_str.encode('utf-8')).decode('utf-8')
-        decoded_str = wisdom.decryption(encoded_str)
+        decoded_str = passwordpack.decryption(encoded_str)
         assert decoded_str == input_str
 
     def test_encrypted_alphanumeric_input(self):
@@ -63,11 +62,11 @@ class Tests:
         for char in input_str:
             idx = arr.index(char)
             str_encrypted += arr[(idx+5) % len(arr)]
-        key = open(wisdom.get_file("key.txt"), "rb").read()
+        key = open(passwordpack.get_file("key.txt"), "rb").read()
         cipher_suite = Fernet(key)
         encoded_str = cipher_suite.encrypt(
             str_encrypted.encode('utf-8')).decode('utf-8')
-        decoded_str = wisdom.decryption(encoded_str)
+        decoded_str = passwordpack.decryption(encoded_str)
         assert decoded_str == input_str
 
     def test_all_input(self):
@@ -90,11 +89,11 @@ class Tests:
                 str_encrypted += arr[(idx+5) % len(arr)]
             else:
                 str_encrypted += char
-        key = open(wisdom.get_file("key.txt"), "rb").read()
+        key = open(passwordpack.get_file("key.txt"), "rb").read()
         cipher_suite = Fernet(key)
         encoded_str = cipher_suite.encrypt(
             str_encrypted.encode('utf-8')).decode('utf-8')
-        decoded_str = wisdom.decryption(encoded_str)
+        decoded_str = passwordpack.decryption(encoded_str)
         assert decoded_str == input_str
 
     def test_unencrypted_input(self):
@@ -107,5 +106,5 @@ class Tests:
                 len(string.ascii_letters + string.digits + string.punctuation),
             )
         )
-        assert wisdom.decryption(
+        assert passwordpack.decryption(
             input_str) == "ERROR: The entered phrase was not encrypted with pypassgen."

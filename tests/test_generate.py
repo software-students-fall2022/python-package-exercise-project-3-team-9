@@ -16,7 +16,7 @@ def test_generate_password_default():
         # Test the num parameter
         num = random.randint(1, 100)
         length = random.randint(1, 100)
-        password = wisdom.generate_password(length, num, 0, 0, 0)
+        password = passwordpack.generate_password(length, num, 0, 0, 0)
         count = 0
         for char in password:
             if char.isdigit():
@@ -41,7 +41,7 @@ def test_generate_password_num():
         # Test the lower parameter
         lower = random.randint(1, 100)
         length = random.randint(1, 100)
-        password = wisdom.generate_password(length, 0, 0, lower, 0)
+        password = passwordpack.generate_password(length, 0, 0, lower, 0)
         count = 0
         for char in password:
             if char.islower():
