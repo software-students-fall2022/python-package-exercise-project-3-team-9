@@ -82,7 +82,8 @@ class Tests:
         cipher_suite = Fernet(key)
         input_str = "".join(random.sample(
             string.punctuation, len(string.punctuation)))
-        encoded_str = cipher_suite.encrypt(input_str.encode('utf-8')).decode('utf-8')
+        encoded_str = cipher_suite.encrypt(
+            input_str.encode('utf-8')).decode('utf-8')
         decoded_str = passwordpack.decryption(encoded_str)
         assert decoded_str == input_str
 
@@ -105,7 +106,8 @@ class Tests:
             str_encrypted += arr[(idx+5) % len(arr)]
         key = open(passwordpack.get_file("key.txt"), "rb").read()
         cipher_suite = Fernet(key)
-        encoded_str = cipher_suite.encrypt(str_encrypted.encode('utf-8')).decode('utf-8')
+        encoded_str = cipher_suite.encrypt(
+            str_encrypted.encode('utf-8')).decode('utf-8')
         decoded_str = passwordpack.decryption(encoded_str)
         assert decoded_str == input_str
 
@@ -131,9 +133,10 @@ class Tests:
                 str_encrypted += char
         key = open(passwordpack.get_file("key.txt"), "rb").read()
         cipher_suite = Fernet(key)
-        encoded_str = cipher_suite.encrypt(str_encrypted.encode('utf-8')).decode('utf-8')
+        encoded_str = cipher_suite.encrypt(
+            str_encrypted.encode('utf-8')).decode('utf-8')
         decoded_str = passwordpack.decryption(encoded_str)
-        assert decoded_str == input_str 
+        assert decoded_str == input_str
 
     def test_unencrypted_input(self):
         """
