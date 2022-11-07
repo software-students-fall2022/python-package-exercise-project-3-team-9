@@ -13,18 +13,6 @@ class Tests:
         assert any(char.islower() for char in password)
         assert any(not char.isalnum() for char in password)
 
-        def test_generate_password_num(self):
-            # Test the num parameter
-            num = random.randint(1, 100)
-            length = random.randint(1, 100)
-            password = passwordpack.generate_password(length, num, 0, 0, 0)
-            count = 0
-            for char in password:
-                if char.isdigit():
-                    count += 1
-            assert len(password) <= count
-            assert any(char.isdigit() for char in password)
-
     def test_generate_password_num(self):
         # Test the num parameter
         num = random.randint(1, 100)
