@@ -101,6 +101,11 @@ class Tests:
         # print("Input: " + input_str)
         key = open(passwordpack.get_file("key.txt"), "rb").read()
         cipher_suite = Fernet(key)
+        str_encrypted = ""
+        for char in input_str:
+            if (char.isdigit() or char.isalpha()):
+                idx = arr.index(char)
+                str_encrypted += arr[(idx+5) % len(arr)]
         encoded_str = cipher_suite.encrypt(str_encrypted.encode('utf-8')).decode('utf-8')
         decoded_str = passwordpack.decryption(encoded_str)
         assert decoded_str == input_str
