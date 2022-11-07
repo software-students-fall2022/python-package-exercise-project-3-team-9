@@ -1,4 +1,4 @@
-import src.pypassgen.wisdom as wisdom
+import pypassgen.pypassgen as pypassgen
 import random
 
 
