@@ -85,7 +85,7 @@ class Tests:
         base = string.digits + string.ascii_letters
         arr = list(base)
         input_str = "".join(random.sample(
-            string.ascii_lowercase), len(string.ascii_lowercase))
+            string.ascii_lowercase, len(string.ascii_lowercase)))
         str_encrypted = ""
         for char in input_str:
             idx = arr.index(char)
@@ -102,7 +102,7 @@ class Tests:
         base = string.digits + string.ascii_letters
         arr = list(base)
         input_str = "".join(random.sample(
-            string.ascii_uppercase), len(string.ascii_uppercase))
+            string.ascii_uppercase, len(string.ascii_uppercase)))
         str_encrypted = ""
         for char in input_str:
             idx = arr.index(char)
@@ -120,7 +120,7 @@ class Tests:
         base = string.digits + string.ascii_letters
         arr = list(base)
         input_str = "".join(random.sample(
-            string.digits), len(string.digits))
+            string.digits, len(string.digits)))
         str_encrypted = ""
         for char in input_str:
             idx = arr.index(char)
