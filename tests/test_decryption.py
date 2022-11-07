@@ -1,4 +1,5 @@
-""" ------ TEST DECRYPTION ------ """
+import src.pypassgen.passwordpack as passwordpack
+from cryptography.fernet import Fernet
 import random
 import string
 from cryptography.fernet import Fernet
