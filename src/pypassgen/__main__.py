@@ -50,9 +50,8 @@ def main():
             print()
         elif choice == "3":
             phrase = input("Enter the phrase to encrypt: ")
-            print("Your encrypted phrase is: ", end="\n")
-            print(passwordpack.encryption(phrase))
-            print()
+            print("Your encrypted phrase is: ",
+                  passwordpack.encryption(phrase) + "\n")
         elif choice == "4":
             phrase = input("Enter the phrase to decrypt: ")
             print("Your decrypted phrase is: " +
