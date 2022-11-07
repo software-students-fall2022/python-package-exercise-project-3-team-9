@@ -1,5 +1,5 @@
 """Main program page"""
-import wisdom
+import pypassgen
 
 
 def menu():
@@ -42,21 +42,21 @@ def main():
                 lower = default_lower
             if special == "":
                 special = default_special
-            print("Your password is: " + wisdom.generate_password(int(length),
+            print("Your password is: " + pypassgen.generate_password(int(length),
                   int(digit), int(upper), int(lower), int(special)) + "\n")
         elif choice == "2":
             pass_str = input("Enter your password: ")
-            print(wisdom.verify_type(wisdom.verify_pass(pass_str), len(pass_str)))
+            print(pypassgen.verify_type(pypassgen.verify_pass(pass_str), len(pass_str)))
             print()
         elif choice == "3":
             phrase = input("Enter the phrase to encrypt: ")
             print("Your encrypted phrase is: ", end="\n")
-            print(wisdom.encryption(phrase))
+            print(pypassgen.encryption(phrase))
             print()
         elif choice == "4":
             phrase = input("Enter the phrase to decrypt: ")
             print("Your decrypted phrase is: " +
-                  wisdom.decryption(phrase) + "\n")
+                  pypassgen.decryption(phrase) + "\n")
         elif choice == "5":
             print("Goodbye!\n")
         else:

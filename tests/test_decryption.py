@@ -1,4 +1,4 @@
-import src.pypassgen.wisdom as wisdom
+import pypassgen.pypassgen as pypassgen
 from cryptography.fernet import Fernet
 import random
 import string
