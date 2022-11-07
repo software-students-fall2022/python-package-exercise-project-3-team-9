@@ -46,8 +46,7 @@ def main():
                   int(digit), int(upper), int(lower), int(special)) + "\n")
         elif choice == "2":
             pass_str = input("Enter your password: ")
-            print(passwordpack.verify_type(
-                passwordpack.verify_pass(pass_str), len(pass_str)))
+            print(passwordpack.verify_type(passwordpack.verify_pass(pass_str), len(pass_str)))
             print()
         elif choice == "3":
             phrase = input("Enter the phrase to encrypt: ")

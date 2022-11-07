@@ -48,7 +48,7 @@ def test_generate_password_num():
                 count += 1
         assert len(password) <= count
         assert any(char.islower() for char in password)
-
+        
 
 def test_generate_password_upper():
     # Test the upper parameter
@@ -69,8 +69,8 @@ def test_generate_password_upper():
         upper = random.randint(1, 100)
         lower = random.randint(1, 100)
         special = random.randint(1, 100)
-        password = passwordpack.generate_password(
-            length, num, upper, lower, special)
+        password = passwordpack.generate_password(length, num, upper, lower, special)
+        
         assert len(password) >= length
         assert any(char.isdigit() for char in password)
         assert any(char.isupper() for char in password)
@@ -94,8 +94,8 @@ def test_generate_password_lower():
         length = random.randint(1, 100)
         assert passwordpack.generate_password(
             length, 0, 0, 0, 0) == "ERROR: Password generation failed."
-
-
+            
+            
 def test_generate_password_special():
     # Test the special parameter
     special = random.randint(1, 100)
@@ -116,8 +116,8 @@ def test_generate_password_all_accuracy():
     upper = random.randint(1, 100)
     lower = random.randint(1, 100)
     special = random.randint(1, 100)
-    password = passwordpack.generate_password(
-        length, num, upper, lower, special)
+    password = passwordpack.generate_password(length, num, upper, lower, special)
+
     assert len(password) >= length
     assert any(char.isdigit() for char in password)
     assert any(char.isupper() for char in password)
@@ -132,8 +132,9 @@ def test_generate_password_all_count():
     upper = random.randint(1, 100)
     lower = random.randint(1, 100)
     special = random.randint(1, 100)
-    password = passwordpack.generate_password(
-        length, num, upper, lower, special)
+
+    password = passwordpack.generate_password(length, num, upper, lower, special)
+
     # Check that the password contains at least the required number of each character type
     count_digit = count_upper = count_lower = count_special = 0
     for char in password:

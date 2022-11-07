@@ -2,8 +2,6 @@ import src.pypassgen.passwordpack as passwordpack
 import random
 
 # ------ TEST VERIFICATION ------
-
-
 class Tests:
     def test_verify_very_strong(self):
         length = random.randint(8, 100)
