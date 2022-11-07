@@ -112,8 +112,6 @@ class Tests:
                 idx = arr.index(char)
                 str_encrypted += arr[(idx+5) % len(arr)]
         encoded_str = cipher_suite.encrypt(str_encrypted.encode('utf-8')).decode('utf-8')
-        encoded_str = cipher_suite.encrypt(
-            str_encrypted.encode('utf-8')).decode('utf-8')
         decoded_str = passwordpack.decryption(encoded_str)
         assert decoded_str == input_str
 
