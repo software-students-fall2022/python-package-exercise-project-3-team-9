@@ -24,7 +24,7 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
 - Run the following command to install the lastest version of the package:
 
   ```bash
-  pipenv install -i https://test.pypi.org/simple/ pypassgen==1.0.0
+  pipenv install -i https://test.pypi.org/simple/ pypassgenNYU==1.0.0
   ```
 
 ## Running package directly from the command line
@@ -114,7 +114,7 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
     ```python
     # in your project
     password = passwordpack.generate_password(8, 2, 2, 2, 2)
-
+  
     print(password)
     # Xq}tT/29
     ```
@@ -134,7 +134,7 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
     ```python
     # in your project
     password = "Xq}tT/29"
-
+  
     print(passwordpack.verify_type(passwordpack.verify_pass(pass_str), len(pass_str)))
     # Very Strong Password
     # It has at least one uppercase, number, special character, lowercase.
@@ -154,7 +154,7 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
     ```python
     # in your project
     encoded = passwordpack.encrypted = passwordpack.encryption("hello world!")
-
+  
     print(encoded)
     # b'gAAAAABjXHQVlraVKy6okfj11o0h0AEqAG8caemLAKEdRCmsrO84_5iG_UatAna5JdWBjZWuJImP8f0K627DmeNkU1a3VlhFvg=='
     ```
@@ -173,7 +173,7 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
     ```python
     # in your project
     decoded = passwordpack.decryption(encoded)
-
+    
     print(decoded)
     # hello world!
     ```

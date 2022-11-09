@@ -1,0 +1,18 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[[source]]
+url = "https://test.pypi.org/simple/"
+verify_ssl = true
+name = "testpypi"
+
+[packages]
+pypassgen = {version = "==0.1.0", index = "testpypi"}
+pypassgennyu = {version = "==1.0.0", index = "testpypi"}
+
+[dev-packages]
+
+[requires]
+python_version = "3.10"
