@@ -1,0 +1,42 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "072a2b314669bdc2a76aa3224c7c61ea6f71d6722a41cce79cc73016cc5ea6fc"
+        },
+        "pipfile-spec": 6,
+        "requires": {
+            "python_version": "3.10"
+        },
+        "sources": [
+            {
+                "name": "pypi",
+                "url": "https://pypi.org/simple",
+                "verify_ssl": true
+            },
+            {
+                "name": "testpypi",
+                "url": "https://test.pypi.org/simple/",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "pypassgen": {
+            "hashes": [
+                "sha256:0f1809c5247cda41d6879f4d321c58f9e890e31ed167c48c55e723fea8cdb467",
+                "sha256:adcc37660b95b405fb35616013557a9568db385aa613f333c1be6841af1103dd"
+            ],
+            "index": "testpypi",
+            "version": "==0.1.0"
+        },
+        "pypassgennyu": {
+            "hashes": [
+                "sha256:df5d98aaa4eef1fddae334b109b471fd5cfa996c3a6df5626f8955065c0ec0df",
+                "sha256:e14c60624d471d03f8f8226802cd5255f7373c7522c65012a325274f2964b1ec"
+            ],
+            "index": "testpypi",
+            "version": "==1.0.0"
+        }
+    },
+    "develop": {}
+}
