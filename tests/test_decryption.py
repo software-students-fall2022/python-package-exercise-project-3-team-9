@@ -2,7 +2,7 @@
 import random
 import string
 from cryptography.fernet import Fernet
-from src.pypassgenNYU import passwordpack
+from pypassgenNYU import passwordpack
 
 
 class Tests:

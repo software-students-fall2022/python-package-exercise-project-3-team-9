@@ -3,9 +3,9 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pypassgenNYU"
+name = "pypassgenNYU1"
 description = "A simple password generator tool with various functions, built with build using setuptools, uploaded to PyPI using twine, and distributed via pip."
-version = "1.0.1"
+version = "1.0.4"
 authors = [
   { name="Darren Le", github="https://github.com/DarrenLe20" },
   { name="Daniel Atlas", github="https://github.com/Spectraorder" },
@@ -30,6 +30,3 @@ dev = ["pytest"]
 "Homepage" = "https://github.com/software-students-fall2022/python-package-exercise-project-3-team-9"
 "Repository" = "https://github.com/software-students-fall2022/python-package-exercise-project-3-team-9.git"
 "Bug Tracker" = "https://github.com/software-students-fall2022/python-package-exercise-project-3-team-9/issues"
-
-[project.scripts]
-passwordpack = "passwordpack.__main__:main"

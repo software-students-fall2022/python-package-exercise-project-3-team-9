@@ -1,6 +1,5 @@
 """Main program page"""
-# import passwordpack
-import passwordpack as passwordpack
+from pypassgenNYU import passwordpack
 
 
 def menu():

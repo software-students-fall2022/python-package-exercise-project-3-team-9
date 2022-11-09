@@ -1,7 +1,7 @@
 """ ------ TEST ENCRYPTION ------ """
 import random
 import string
-import src.pypassgenNYU.passwordpack as passwordpack
+from pypassgenNYU import passwordpack
 from cryptography.fernet import Fernet
 
 
