@@ -189,4 +189,4 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
 [Elyazya Al Kobaisi](https://github.com/elyazya)
 
 ## PyPI link to package
-<https://test.pypi.org/project/pypassgenNYU1/1.0.4/>
+<https://test.pypi.org/project/pypassgenNYU1/>
