@@ -156,7 +156,8 @@ def encryption(origin_password):
         else:
             str_encrypted += char
 
-    key = open(get_file("key.txt"), "rb").read()
+    # key = open(get_file("key.txt"), "rb").read()
+    key = "9JLx_ipNCkFmSsSNrb4YdFbZuaQqOJbWMIk0ONnI7rU="
     cipher_suite = Fernet(key)
     encoded_text = cipher_suite.encrypt(
         str_encrypted.encode('utf-8')).decode('utf-8')
@@ -174,7 +175,8 @@ def decryption(decrypted_password):
         A string containing the decrypted and decooded string
     """
     # retrieving key from db + decrypting using Fernet
-    key = open(get_file("key.txt"), "rb").read()
+    # key = open(get_file("key.txt"), "rb").read()
+    key = "9JLx_ipNCkFmSsSNrb4YdFbZuaQqOJbWMIk0ONnI7rU="
     cipher_suite = Fernet(key)
     try:
         str_decrypted = (cipher_suite.decrypt(decrypted_password.encode('utf-8'))).decode('utf-8')

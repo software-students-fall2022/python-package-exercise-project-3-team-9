@@ -24,7 +24,7 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
 - Run the following command to install the lastest version of the package:
 
   ```bash
-  pip install -i https://test.pypi.org/simple/ pypassgenNYU1==1.0.4
+  pipenv install -i https://test.pypi.org/simple/ pypassgenNYU1==1.0.6
   ```
 
 ## Running package directly from the command line
