@@ -1,8 +1,9 @@
 """ ------ TEST ENCRYPTION ------ """
 import random
 import string
-import src.pypassgen.passwordpack as passwordpack
+import src.pypassgenNYU.passwordpack as passwordpack
 from cryptography.fernet import Fernet
+
 
 class Tests:
   # ------ TEST ENCRYPTION ------
@@ -92,8 +93,9 @@ class Tests:
         key = open(passwordpack.get_file("key.txt"), "rb").read()
         cipher_suite = Fernet(key)
         encoded_str = passwordpack.encryption(input_str)
-        assert (cipher_suite.decrypt(encoded_str.encode('utf-8'))).decode('utf-8') == str_encrypted
-     
+        assert (cipher_suite.decrypt(encoded_str.encode('utf-8'))
+                ).decode('utf-8') == str_encrypted
+
     def test_upper_input(self):
         """
         Test encrypted upper case input
