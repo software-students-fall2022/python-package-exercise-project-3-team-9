@@ -1,4 +1,4 @@
-from pypassgenNYU import passwordpack
+import src.pypassgenNYU.passwordpack as passwordpack
 import random
 
 # ------ TEST VERIFICATION ------
