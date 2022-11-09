@@ -5,9 +5,9 @@
 
 A little exercise to create a Python package, build it, test it, distribute it, and use it. See [instructions](./instructions.md) for details.
 
-## Pypassgen - A simple password generator
+## pypassgenNYU - A simple password generator
 
-Pypassgen has 4 functions that assist the user in creating their passwords:
+pypassgenNYU has 4 functions that assist the user in creating their passwords:
 
 1. Generating a random password based on the user's input criteria (e.g., all numeric, all alphabetic, uppercase, etc.)
 
@@ -15,7 +15,7 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
 
 3. Encrypt the user's input string into a secured password based on the package's specific encryption rules.
 
-4. Decrypt the user's encrypted password back to its original form provided that the password was orginally encrypted by pypassgen.
+4. Decrypt the user's encrypted password back to its original form provided that the password was orginally encrypted by pypassgenNYU.
 
 ## Installation
 
@@ -24,7 +24,7 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
 - Run the following command to install the lastest version of the package:
 
   ```bash
-  pipenv install -i https://test.pypi.org/simple/ pypassgen==1.0.0
+  pipenv install -i https://test.pypi.org/simple/ pypassgenNYU==1.0.0
   ```
 
 ## Running package directly from the command line
@@ -34,13 +34,13 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
   - Run the following command in the terminal:
 
     ```python
-    python -m pypassgen
+    python -m pypassgenNYU
     ```
 
   - This will initialize the package and prompt the user to choose their desired function.
 
     ```bash
-    Welcome to pypassgen - your simple and lightweight password generator!
+    Welcome to pypassgenNYU - your simple and lightweight password generator!
     1. Generate a password
     2. Verify a password
     3. Encrypt a phrase
@@ -94,7 +94,7 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
 - Create a Python program that imports the package and its functions:
 
   ```python
-  from pypassgen import passwordpack
+  from pypassgenNYUNYU import passwordpack
   ```
 
 ### Functions
@@ -105,7 +105,7 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
   - Pass in `0` if you don't want the password to include specific character types.
 
     ```python
-    # in pypassgen.passwordpack
+    # in pypassgenNYU.passwordpack
     generate_password(length=8, num=1, upper=1, lower=1, special=1)
     ```
 
@@ -124,7 +124,7 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
   - Call the `verify_password` function and pass the password you want to verify as an argument.
 
     ```python
-    # in pypassgen.passwordpack
+    # in pypassgenNYU.passwordpack
     verify_pass(password=None)
     verify_type(pass_type=[], length=0):
     ```
@@ -145,7 +145,7 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
   - Call the `encryption` function and pass the string to be encrypted as argument:
 
     ```python
-    # in pypassgen.passwordpack
+    # in pypassgenNYU.passwordpack
     encryption(str)
     ```
 
@@ -164,7 +164,7 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
   - Call the `decryption` function and pass the encrypted string as argument:
 
     ```python
-    # in pypassgen.passwordpack
+    # in pypassgenNYU.passwordpack
     decryption(str)
     ```
 
@@ -189,4 +189,4 @@ Pypassgen has 4 functions that assist the user in creating their passwords:
 [Elyazya Al Kobaisi](https://github.com/elyazya)
 
 ## PyPI link to package
-<https://test.pypi.org/project/pypassgenNYU/1.0.0/>
+<https://test.pypi.org/project/pypassgenNYUNYU/1.0.0/>
