@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pypassgenNYU"
 description = "A simple password generator tool with various functions, built with build using setuptools, uploaded to PyPI using twine, and distributed via pip."
-version = "1.0.0"
+version = "1.0.1"
 authors = [
   { name="Darren Le", github="https://github.com/DarrenLe20" },
   { name="Daniel Atlas", github="https://github.com/Spectraorder" },
